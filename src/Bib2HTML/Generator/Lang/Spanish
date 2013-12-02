@@ -1,0 +1,87 @@
+# Spanish support for the generators.
+#
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
+#                        Sebastian Rodriguez <sebastian.rodriguez@utbm.fr>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
+
+I18N_LANG_BIB2HTML_COPYRIGHT = Este documento fue generado por #1.<BR>\
+                               Copyright &copy; {{*get_final_copyright}} #2 (Bajo #3)
+I18N_LANG_DEFAULT_TITLE = BibTeX
+I18N_LANG_DOCUMENTS = Documentos
+I18N_LANG_FIELD_ADDRESS = Direcci&oacute;n
+I18N_LANG_FIELD_ADSURL = Acoplamiento al ADS
+I18N_LANG_FIELD_ABSTRACT = Resumen
+I18N_LANG_FIELD_ABSTRACT_KEYWORDS = Resumen y Palabras Claves
+I18N_LANG_FIELD_ANNOTATION = Comentario
+I18N_LANG_FIELD_AUTHORS = Autor(es)
+I18N_LANG_FIELD_CHAPTER = Capitulo de
+I18N_LANG_FIELD_DATE = Fecha
+I18N_LANG_FIELD_DOI = Documento en Internet
+I18N_LANG_FIELD_DOWNLOAD = Descargar el articulo completo: #1
+I18N_LANG_FIELD_EDITION = Edici&oacute;n
+I18N_LANG_FIELD_EDITORS = Redactor en Jefe
+I18N_LANG_FIELD_HOWPUBLISHED = How published
+I18N_LANG_FIELD_IN = En
+I18N_LANG_FIELD_INSTITUTION = Instituci&oacute;n
+I18N_LANG_FIELD_ISBN = N&uacute;mero ISBN
+I18N_LANG_FIELD_ISSN = N&uacute;mero ISSN
+I18N_LANG_FIELD_JOURNAL = Revista
+I18N_LANG_FIELD_KEYWORDS = <strong>Palabras claves</strong>: #1
+I18N_LANG_FIELD_KEYWORDS_TITLE = Palabras claves
+I18N_LANG_FIELD_NOTE = Nota
+I18N_LANG_FIELD_NUMBER = N&uacute;mero
+I18N_LANG_FIELD_ORGANIZATION = Organizaci&oacute;n
+I18N_LANG_FIELD_PAGES = P&aacute;gina(s)
+I18N_LANG_FIELD_PDFFILE = PDF
+I18N_LANG_FIELD_PUBLISHER = Editor
+I18N_LANG_FIELD_READERS = Lectore(s)
+I18N_LANG_FIELD_SCHOOL = Escuela
+I18N_LANG_FIELD_SERIES = Serie
+I18N_LANG_FIELD_TITLE = T&iacute;tulo
+I18N_LANG_FIELD_TYPE = Tipo
+I18N_LANG_FIELD_URL = URL
+I18N_LANG_FIELD_VOLUME = Volumen
+I18N_LANG_FIELD_YEAR = A&ntilde;o
+I18N_LANG_FORMAT_NAME = l{ (v)}{ f.}{, j}
+I18N_LANG_FORMAT_NAMES = { y }{, }
+I18N_LANG_KEYWORDS = Palabras claves
+I18N_LANG_P_ARTICLE = Articulos
+I18N_LANG_P_BOOK = Libros
+I18N_LANG_P_BOOKLET = Libros Sin Sponsord
+I18N_LANG_P_INBOOK = Partes de Libros
+I18N_LANG_P_INCOLLECTION = En colecci&oacute;n
+I18N_LANG_P_INPROCEEDINGS = En proceedings
+I18N_LANG_P_MANUAL = Manuales T&eacute;cnicos
+I18N_LANG_P_MASTERTHESIS = Tesis de Master
+I18N_LANG_P_MISC = 'Documentos miscel&aacute;neos'
+I18N_LANG_P_PHDTHESIS = Tesis Doctorales
+I18N_LANG_P_PROCEEDINGS = Conference proceedings
+I18N_LANG_P_TECHREPORT = Reportes T&eacute;cnicos
+I18N_LANG_P_UNPUBLISHED = In&eacute;dito
+I18N_LANG_S_ARTICLE = Articulo
+I18N_LANG_S_BOOK = Libro
+I18N_LANG_S_BOOKLET = Not-sponsored book
+I18N_LANG_S_INBOOK = Parte de Libro
+I18N_LANG_S_INCOLLECTION = En una colecci&oacute;n
+I18N_LANG_S_INPROCEEDINGS = En proceedings
+I18N_LANG_S_MANUAL = Manual T&eacute;cnico
+I18N_LANG_S_MASTERTHESIS = T&eacute;sis de Master
+I18N_LANG_S_MISC = 'Documento Miscelaneo'
+I18N_LANG_S_PHDTHESIS = T&eacute;sis Doctoral
+I18N_LANG_S_PROCEEDINGS = Conference proceedings
+I18N_LANG_S_TECHREPORT = Reporte T&eacute;cnico
+I18N_LANG_S_UNPUBLISHED = In&eacute;dito

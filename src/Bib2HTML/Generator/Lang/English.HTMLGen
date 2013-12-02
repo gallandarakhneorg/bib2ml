@@ -1,0 +1,54 @@
+# English support for the generator HTMLGen.
+#
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
+
+I18N_LANG_ALL_ELEMENTS = All Elements
+I18N_LANG_ARTICLESINSAMEDOMAINS = Documents in the same domains
+I18N_LANG_FIELD_BIBTEX_VERBATIM = BibTeX code
+I18N_LANG_FIELD_XML_VERBATIM = XML code
+I18N_LANG_DEFAULT_TITLE = Bibliography
+I18N_LANG_DOMAIN_TREE = Domain Tree
+I18N_LANG_DOMAINS = Domains
+I18N_LANG_ENTRY_TYPE_TREE = Hierarchical list by entry type
+I18N_LANG_FRAME_TITLE_AUTHORS = Authors
+I18N_LANG_FRAME_TITLE_TYPES = Types
+I18N_LANG_FRAMES = Frames
+I18N_LANG_INDEX = Index
+I18N_LANG_INDEX_COMMENT_ARTICLE = article
+I18N_LANG_INDEX_COMMENT_AUTHOR = author
+I18N_LANG_INDEX_COMMENT_BOOKTITLE = booktitle
+I18N_LANG_INDEX_COMMENT_EDITOR = editor
+I18N_LANG_INDEX_COMMENT_HOWPUBLISHED = publication mean
+I18N_LANG_INDEX_COMMENT_INSTITUTION = institution
+I18N_LANG_INDEX_COMMENT_PUBLISHER = publisher
+I18N_LANG_INDEX_COMMENT_SCHOOL = school
+I18N_LANG_INDEX_COMMENT_TITLE = title
+I18N_LANG_NEXT = Next
+I18N_LANG_NO_DATE = Not dated
+I18N_LANG_NO_FRAME = No Frame
+I18N_LANG_NO_FRAME_ALERT = <H2>Frame Alert</H2>\
+                           <P>This document is designed to be\
+                           viewed using the frames feature. If\
+                           you see this message, you are using a\
+                           non-frame-capable web client.<BR>\
+                           Link to <A HREF="#1">Non-frame version.</A>.<BR>#2
+I18N_LANG_OVERVIEW = Overview
+I18N_LANG_PREV = Prev
+I18N_LANG_TREE = Tree
+I18N_LANG_SMALL_IN = in:&nbsp;#1
+I18N_LANG_SUBMIT_BUG = Submit a bug

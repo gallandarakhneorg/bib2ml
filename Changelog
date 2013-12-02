@@ -1,0 +1,389 @@
+2011-07-31 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 6.7
+	* bib2sql: Bug fix: the bibtex_entrytype table is not filled with the types
+	                    of the entries due to an error in a boolean condition.
+	* bib2sql: Notify with a warning when the same author seems to appear many times
+	           for the same entry.
+	* bib2sql: add command line parameter 'sql-engine' which permits to specify
+	           the SQL engine for which the SQL script should be generated.
+	* bib2sql: create the MySQL support.
+	* bib2sql: create the PostgreSQL support.
+
+2011-07-27 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 6.6
+	* bib2sql: the word "order" could not be used as variable name because it is a
+	           reserved word in SQL syntax. Rename it as "order_id".
+	* bib2sql: Ensure that the numerical identifiers of the authors and editors are unique.
+
+2009-03-21 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 6.5
+	* Extend the syntax supported for the bibtex keys, but output a warning.
+	* Add warning message when a language file was not found (verbose mode 2 or higher).
+
+2009-03-15 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 6.4
+	* Add function which remove the accents from an HTML string. This function is used to have consistent sorting outputs.
+	* Changes the labels of the trees' root nodes.
+	* The C and c acute characters are now correctly substitued.
+	* Bug fix: the caron TeX characters are not translated into well-formated HTML characters. Fixed
+	* Bug fix: in Simple.pm, some hash references have not a generic syntax which cause invalid invalid hash refs exceptions.
+	* Change the official website address from "www.arakhne.org/bib2html" to "www.arakhne.org/bib2ml".
+
+2008-08-01 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 6.3
+	* Add the support for the TeX command \url.
+	* Major bug fix: the locale support of the Theme were not loaded. Fixed.
+
+2008-05-28 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 6.2
+	* Bug fix: several thrid-party tools declare BibTeX fields
+	  with a name composed of the special characters "-_0-9:.".
+	  The BibTeX parser now supports this kind of field name.
+
+2007-07-25 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 6.1
+	* Rename the tool Bib2HTML into Bib2ML which is more
+	  closer to the different available translations.
+	  And it will prepare the submission to CTAN.
+
+2007-04-16 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 6.1
+	* Feature:
+	  - When the 'pdf' field contains a local file reference, it
+            will be replaced by the 'localfile' field.
+
+2007-03-21 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 6.0
+	* Feature:
+	  - Add the BibTeX field "doi".
+          - Add the support of JabRef's groups.
+
+2006-10-06 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 5.1
+	* Feature:
+	  - Add new LaTeX commands: \mathbb, \{, \}
+        * Bug fixes:
+          - in the XML generator, the quotation, the ampersand
+            and the less-then and greater-than characters are
+            not properly processed.
+          - The sorting functions was re-implemented to
+            tackle problems one accentuated characters.
+          - The 'inbook' entries will be proceeded as the
+            "book" entries.
+
+2006-08-31 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 5.0
+	* Feature:
+	  - Add the SQL generator.
+	  - Add the generator parameter 'xml-encoding'
+	  - Add the command line options '--protect', '--cvs', '--svn'
+	* Bug fixes:
+          - Rewrite some error messages to be more understandable.
+
+2006-05-31 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 4.4
+	* Feature:
+	  - Add the support for the TeX commands \string, \edef, \xdef
+	  - Add the generator parameter 'html-encoding'
+
+2006-05-29 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 4.3
+	* Feature:
+	  - Tobia adds the support for some roman characters.
+
+2006-05-03 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 4.2
+	* Feature:
+	  - Add the support of the BibTeX field 'adsurl' which permits
+	    to link to the standard Astrophysics Citation Reference Database.
+
+2006-04-12 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 4.1
+	* Bug:
+	  - When the BibTeX parser find multi-definition of BibTeX strings,
+	    it dies on an undefined subroutine error.
+
+2006-04-10 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 4.0
+        * Feature:
+	- Do not display in verbatim mode the BibTeX fields with
+	  a name starting with "opt".
+        - Luca patches the TeX translator for supporting more letters
+	  with the caron accent.
+        - From a Luca's request, the generator parameter 'hideindex'
+	  is introduced to allow hiding of the indexes.
+        - Aurel introduces the generator parameters 'max-titlelength-overview'
+	  and 'show-journalparams-overview'.
+        - Stephane introduces the generator parameter 'doc-repository'.
+        - Stephane introduces the command 'bib2xml' as a specialization
+	  of bib2html (with the option -g XML).
+	* Bug:
+	- The translator does not produce the right default value for
+          the TeX command \v.
+	- The HTML function which permits to extract author initials
+	  was fixed to support in entry name's initials.
+	- The list of generators was ot properly displayed if
+	  the absolute path to bib2html contains a directory name
+	  with a space character.
+	- The list of support languages  was ot properly displayed if
+	  the absolute path to bib2html contains a directory name
+	  with a space character.
+	- The editors was not displayed when the author's list was empty.
+	- The BibTeX references [???] now support HTML characters.
+
+2005-02-14 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 3.3
+        * Feature:
+	- Add some norvegian characters.
+	* Bug:
+	- The parameter of @preamble is now entirely
+	  parsed as a string. You don't need any more
+          to enclose the TeX command by braces.
+        - the parser for the author's names know support
+          HTML entities inside the firstnames.
+
+2005-01-25 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 3.2
+	* Feature:
+	- Add the field 'pdf' which must contains the name
+	  of a PDF file (an URL or a local filename).
+	- Add the parameter 'backslash' for the Extended
+	  generator.
+	* Bug:
+	- In the parser, The token 'string' could be preceeded
+	  by a set of space from the start of the line.
+	- Remove the required display of the field 'date'. In
+	  BibTeX, the fields 'year' and 'month' replace it.
+	- Be sure that some characters will not be used
+	  inside the filnames (e.g. ':').
+	- Major bug fix inside the parser. Multiple specification
+	  of BibTeX filename on the command line is now truly
+	  supported.
+
+2004-12-06 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 3.1
+	* Features:
+	- Portuguese is included into the generators by Joao.
+	* Bug:
+	- The name of the language passed with '--lang' is now
+	  case-insensitive.
+	
+2004-12-03 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 3.0
+	* Features:
+	- More TeX commands are added by Dimitris:
+	  \epsilon, \Epsilon, \mathbf, \mathit, \mathrm,
+	  \mathsf, \mathtt, \mathnormal, \sqrt
+	- Create a XML generator which respect the DTD from
+	  BibTeXML.
+	- Add an XML output inside the HTML generator.
+	* Bug:
+	- The character '+' is not allowed inside the entry keys.
+
+2004-11-26 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 2.0
+	* Features:
+	- Spanish is included into the generators by Sebastian.
+	- Links to the author's list of publication was
+	  added for each other inside the entry's field
+	  list.
+	- The option '--checknames' permits to check if
+	  some author's names are duplicated or contain
+	  mistakes.
+	* Bug:
+	- the year does not appears inside the table of
+	  the fields.
+	- the language support for theme only applies
+	  the English definitions, not the other
+	  languages (French, Spanish).
+
+2004-11-12 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 1.5
+	* Bug:
+	- sometimes the carriage return characters was
+	  not supported by the BibTeX parser.
+	- Generation of the BibTeX short labels (eg. [ABC04])
+	  produces too long labels in case a lot of
+	  names was proposed to the function.
+	- The names of the authors are not well upper-cased
+	  for each first letter of the words.
+	- if an error occurs during the copy of a pdf file,
+	  bib2html will not failed but only warm the user.
+
+2004-09-22 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 1.4
+	* Bug: do not copy the electronical file with 
+	the generator parameter 'target-url' was specified
+	for the Extended generator.
+
+2004-08-23 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 1.3
+	* Features:
+	- the generator parameter 'type-matching' has its
+	  value's syntax extended.
+	- Add the new BibTeX entry type 'proceedings' and
+	  'unpublished'.
+	* Bugs:
+	- The values of the fields 'localfile' and 'url'
+	  were not properly extracted.
+	- Fix the indentation of the generated BibTeX section.
+	- Updates some language's strings
+	- Assumes that the characters '-' and '_' are aliases
+	  for the character '-' inside the generator
+	  parameter's names.
+	- Fix the output to be validable by the W3C validators
+	  (HTML 4.01 and CSS).
+
+2004-08-17 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 1.2
+	* Bugs:
+	- rhe special section @comment{} was not properly
+	  parsed. Fix it with an update of the regular
+	  expression which matches "@COMMENT".
+	- Allow the state "line_comment" to finish the
+	  BibTeX file's parsing.
+
+2004-03-27 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 1.1
+	* Features:
+	- enhances the generator parameters 'author-regexp',
+	  etc: add many new types instead of one.
+	- add the support of the BibTeX field 'crossref':
+	  it permits to implement a kind of inheritance
+	  between two entries
+	- add the generation of a BibTeX code verbatim
+	  (and the command line parameter which permits
+	  to set it on/off)
+	* Bugs:
+	- in indexes, regroup the reference with the same label
+	- put a better header title inside the HTML files of
+	  the entries
+	- w3c norm fix: generates the <body> tags
+	- add a white background color for the theme Simple
+	- in ExtendedGen.pm, DomainGen.pm: fix a syntactical
+	  error and update to be compliant with fixes that
+	  occurs inside HTMLGen.pm
+	- in HTMLGen.pm, Norbert fixes some bug due to the
+	  bad inclusion of their patchs for the release 1.0
+	- in Parser.pm: Norbert fixes a infinite loop recusion
+	  bug. This bug is due to the definition of a constant
+	  with same name and value (in a lowercase comparison).
+	  For example: @STRING{springer=Springer} generates a
+	  infinite loop.
+	- some code cleaning
+
+2004-03-17 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 1.0
+	* Features:
+	- add generator parameters for the HTMLGen generator:
+	  author-regexp, max-names-overview, max-names-list,
+	  newtype, type-matching (added by Norbert)
+	* Bugs:
+	- an exception was generated when an entry has no
+	  author nor editor.
+	- in bibtex parsing: now support syntax as foo # 
+	  " and " # bla
+	- applies patchs from Norbert in TeX.pm, Misc.pm
+	  and HTMLGen.pm    
+
+2004-02-02 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 0.11
+	* Features:
+	- add an index of authors and of author's publications
+	  inside the two left frames
+	- add the class AbstractGenerator.pm
+	- add ExtendedGen.pm which permits to generate HTML
+	  page with:
+	  a) isbn, issn, and readers
+	  b) abstract and keywords
+	  c) the support for downloading an electronic
+	     document ('localfile')
+	- add the support of LaTeX environments (\begin,\end)
+	- add the generator Domain which permits to support
+	  domain for documents (domain, nddomain, rddomain,
+	  domains)
+	* Bugs:
+	- in HTMLGen.pm, fixes not initialized variable uses
+	- changes the behavior of some command line options
+	- in Parser.pm, support recursive merging operator for strings
+
+2003-12-11 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 0.10
+	* Bugs:
+	- in BibScanner.pm, did not recognized correctly the
+	@STRING commands
+	- in BibScanner.pm, the concatened strings was too
+	  early merged (before any replacement by the
+	  @STRING's values)
+	- in BibScanner.pm, the parsed field labels must
+	  be automatically lower cased. Ut permits to support
+	  case-independent label for BibTeX fields
+	- in Scanner.pm, ungetpattern() does not its job well.
+
+2003-09-19 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 0.9
+	* Features:
+	- Adds the generator 'Extended' which support the
+          bibtex tags:
+	  * 'url' : URL to informational web page
+	  * 'isbn'
+	  * 'issn'
+	  * 'localfile' : relative path to a file to download
+	  * 'abstract'
+	  * 'keywords'
+	  * 'readers' : informational tag that indicates who
+	    read this entry (according to the bibtex name syntax)
+	- Adds the support of "et al." inside the bibtex names.
+	- Adds some command line arguments
+	* Bugs:
+	- in the HTML filename translations.
+	- get the editor field when the author one is empty.
+	- ignore TeX parsing for the fields 'localfile' and 'url'
+	- support more formats for the bibtex author's names:
+	  [von] Last, jr, First [and ...]
+	  First [von] Last, jr [and ...]
+	  [von] Last, First [jr] [and ...]
+	  First [von] Last [jr] [and ...]
+	  name, [name, ...] [and name]
+
+2003-08-01 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 0.8
+	* Feature: adds the support of the LaTeX commands
+	  \cite[]{}
+	* Bugs:
+	- recognizes the character '-' inside the bibkeys
+	- some other minor bug fixes
+
+2003-07-09 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 0.7
+	* Features:
+	- add the support of mathematical modes (not the support
+	  of all TeX commands inside the mathematical mode)
+	- partial support of Math-ML
+	* Bugs:
+	- add support of some TeX commands( \i, \~, ...)
+	- ignore text between bibtex entries
+	- better recognition for author names.
+	- warm the user when the "year" is not a number.
+	- suppress redondant error messages.
+	- bug in the verbosing level calculation
+	- some syntaxic fixes
+
+2003-06-26 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 0.6
+	* Features:
+	- adds the multi-language support
+	- adds theme for the HTML generators
+	* Bugs:
+	- some uses of the function sort inside
+	  a return are improper. Fixed to be
+	  sure that the return statement takes
+	  only one value.
+	- adds the function notempty() to permit to
+	  have strings which contain only "0"
+
+2003-03-04 Stéphane GALLAND <galland@arakhne.org>
+	* Release: 0.5
+	This is the first public release on the version
+	entirely based on perl.
+  

@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-/W3C/DTD HTML 4.01 Transitional/EN" "http:/www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>BibteXML DTD</title>
+  </head>
+  <body bgcolor='#dae6e6'>
+    <pre>
+<font color="gray">&lt;!--
+  - File: $Id: bibteXML-ext.dtd, 2003.06.26 13:52:00 vbg Exp $
+  -
+  - This DTD expresses XML markup similar to the BibTeX language
+  - specified for LaTeX, or actually its content model.
+  - For documentation on BibTeX, see
+  -   http://www.ctan.org/tex-archive/biblio/bibtex/distribs/doc/
+  -
+  - Suggested invocation:
+  - 
+  -   &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+  -   &lt;!DOCTYPE bibtex:file PUBLIC
+  -       "-//BibTeXML//DTD XML for BibTeX (extended) v1.0//EN"
+  -       "bibteXML-ext.dtd" &gt;
+  -   &lt;bibtex:file xmlns:bibtex="http://bibtexml.sf.net/"&gt;
+  -   ...
+  -   &lt;/bibtex:file&gt;
+  - 
+  - Available from  http://bibtexml.sf.net/
+  -
+  - This code originally developed by
+  - Vidar Bronken Gundersen
+  - Zeger W. Hendrikse
+  -
+  - This program is free software; you can redistribute it and/or
+  - modify it under the terms of the GNU General Public License.
+  - See  http://www.gnu.org/copyleft/gpl.html
+  -
+--&gt;</font>
+
+
+<font color="gray">&lt;!-- popular user fields --&gt;</font>
+
+<b>&lt;!ENTITY</b> % user.fields
+   "( bibtex:abstract?, bibtex:affiliation?,
+    bibtex:contents?, bibtex:copyright?,
+    (bibtex:isbn | bibtex:issn)?, bibtex:doi?,
+    bibtex:keywords?, bibtex:language?, bibtex:lccn?, 
+    bibtex:location?, bibtex:mrnumber?, bibtex:price?, 
+    bibtex:size?, bibtex:url?, bibtex:category? )"<b>&gt;</b>
+
+<b>&lt;!ENTITY</b> % BibTeXML.common.standard.fields
+   ", bibtex:key?, bibtex:crossref?, %user.fields;"<b>&gt;</b>
+
+
+<font color="gray">&lt;!-- ..................................................................... --&gt;</font>
+<font color="gray">&lt;!-- Other popular fields
+  - 
+  - BibTeX is extremely popular, and many people have used it to store
+  - information. Here is a list of some of the more common fields:
+  - 
+  - [affiliation]  The authors affiliation. 
+  - [abstract]  An abstract of the work. 
+  - [contents]  A Table of Contents 
+  - [copyright]  Copyright information. 
+  - [ISBN]  The International Standard Book Number. 
+  - [ISSN]  The International Standard Serial Number. 
+  -         Used to identify a journal. 
+  - [keywords]  Key words used for searching or possibly for annotation. 
+  - [language]  The language the document is in. 
+  - [location]  A location associated with the entry,
+  -             such as the city in which a conference took place.
+  - [LCCN]  The Library of Congress Call Number.
+  -         I've also seen this as lib-congress. 
+  - [mrnumber]  The Mathematical Reviews number. 
+  - [price]  The price of the document. 
+  - [size]  The physical dimensions of a work. 
+  - [URL] The WWW Universal Resource Locator that points to the item being
+  -       referenced. This often is used for technical reports to point to the
+  -       ftp site where the postscript source of the report is located.
+  - 
+  - When using BibTeX with LaTeX you need
+  - BibTeX style files to print these data.
+  -
+  - Ref: www.ecst.csuchico.edu/~jacobsd/bib/formats/bibtex.html
+--&gt;</font>
+
+<b>&lt;!ELEMENT</b>   bibtex:abstract        (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:affiliation     (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:contents        (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:copyright       (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:isbn            (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:issn            (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:language        (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:lccn            (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:location        (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:mrnumber        (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:price           (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:size            (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:url             (#PCDATA) <b>&gt;</b>
+
+
+<font color="gray">&lt;!-- User requested fields
+  - [category]  Category of this bibitem
+  - [DOI]       The Digital Object Identifier (www.doi.org)
+  -               used to redirect to articles, a key like 10.1000/203
+--&gt;</font>
+
+<b>&lt;!ELEMENT</b>   bibtex:category      (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:doi           (#PCDATA) <b>&gt;</b>
+
+
+<font color="gray">&lt;!-- ..................................................................... --&gt;</font>
+<font color="gray">&lt;!-- Alternative syntax for compound fields
+  -  for author, editor, keywords and title fields.
+  -  Backwards compatible syntax.
+--&gt;</font>
+
+<b>&lt;!ENTITY</b> % BibTeXML.author.element "IGNORE"<b>&gt;</b>
+<b>&lt;!ENTITY</b> % BibTeXML.editor.element "IGNORE"<b>&gt;</b>
+
+<b>&lt;!ENTITY</b> % author.qname "(bibtex:author | bibtex:authorlist)"<b>&gt;</b>
+<b>&lt;!ENTITY</b> % editor.qname "(bibtex:editor | bibtex:editorlist)"<b>&gt;</b>
+
+<b>&lt;!ELEMENT</b>  bibtex:authorlist  (bibtex:person+) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>  bibtex:editorlist  (bibtex:person+) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>  bibtex:author      (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>  bibtex:editor      (#PCDATA) <b>&gt;</b>
+
+<b>&lt;!ELEMENT</b>  bibtex:person ( ( bibtex:initials |
+                           (bibtex:first, bibtex:middle?)),
+                           bibtex:prelast?, bibtex:last,
+                           bibtex:lineage?)<b>&gt;</b>
+
+<font color="gray">&lt;!-- first, middle and last name should be obvious
+  - preLast is for names like Thomas *de* Burghes,
+  - lineage is used for "Jr" in names like "James T. Kirk, Jr."
+  --&gt;</font>
+<b>&lt;!ATTLIST</b>   bibtex:person  email    CDATA  #IMPLIED
+                           url      CDATA  #IMPLIED
+<b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:first           (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:initials        (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:last            (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:middle          (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:prelast         (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:lineage         (#PCDATA) <b>&gt;</b>
+
+
+<b>&lt;!ENTITY</b> % BibTeXML.title.element "IGNORE"<b>&gt;</b>
+<b>&lt;!ENTITY</b> % title.qname  "(bibtex:title | bibtex:titlelist)"<b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:titlelist     (bibtex:title, bibtex:subtitle?)<b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:subtitle      (#PCDATA) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:title         (#PCDATA) <b>&gt;</b>
+
+<b>&lt;!ENTITY</b> % BibTeXML.keywords.element "IGNORE"<b>&gt;</b>
+<b>&lt;!ENTITY</b> % keywords.qname  "bibtex:keywords"<b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:keywords      (bibtex:keyword+) <b>&gt;</b>
+<b>&lt;!ELEMENT</b>   bibtex:keyword       (#PCDATA) <b>&gt;</b>
+
+
+<font color="gray">&lt;!-- ..................................................................... --&gt;</font>
+<font color="gray">&lt;!-- reuse the strict BibTeXML DTD --&gt;</font>
+<b>&lt;!ENTITY</b> % BibTeXML-strict PUBLIC
+    "-//BibTeXML//DTD XML for BibTeX v1.0//EN"
+    "bibteXML.dtd"<b>&gt;</b>
+%BibTeXML-strict;
+
+
+<font color="gray">&lt;!-- ..................................................................... --&gt;</font>
+<font color="gray">&lt;!-- End of bibtex dtd --&gt;</font>
+
+    </pre>
+  </body>
+</html>

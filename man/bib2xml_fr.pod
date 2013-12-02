@@ -1,0 +1,211 @@
+=head1 NOM
+
+bib2xml - Script Perl générant des fichiers XML à partir de fichiers BibTeX
+
+=head1 SYNOPSIS
+
+bib2xml [options] F<fichier> [F<fichier> ...]
+
+=head1 DESCRIPTION
+
+bib2xml est un script permettant de generer des fichiers XML structurant et décrivant le contenu d'une base bibliographique écrite dans le format BibTeX.
+
+Le fichier XML généré est conforme à la DTD de http://bibtexml.sf.net
+
+Cette commande est équivalente à:
+bib2html [options] F<fichier> [F<fichier> ...] -g XML
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<-[no]b>
+
+=item B<--[no]bibtex>
+
+Génération (ou non) du code BibTeX dans les pages HTML.
+
+=item B<--[no]checknames>
+
+Vérification de la cohérence des noms des auteurs. Un avertissement sera
+exprimée chaque fois que bib2html détectera des noms dupliqués ou des
+fautes de frappe.
+
+=item B<--cvs>
+
+Si spécifiée, cette option interdit la suppression des sous-fichiers
+'.cvs', 'CVS' et 'CVSROOT' dans le répertoire destination.
+
+=item B<-d> I<nom>[=I<valeur>]
+
+Voir B<--generatorparam>.
+
+=item B<--doctitle> I<texte>
+
+Initialisation du titre de la page principale.
+
+=item B<-f>
+
+=item B<--force>
+
+Force l'écriture des pages HTML dans le répertoire destination.
+
+=item B<-g> I<classe>
+
+=item B<--generator> I<classe>
+
+Spécification du générateur à utiliser. I<class> doit être une classe Perl
+valide.
+
+=item B<--generatorparam> I<nom>[=I<valeur>]
+
+Initialisation de la valeur d'un paramètre du générateur. Ce paramètre doit être une paire I<nom>=I<valeur> ou simplement un I<nom>.
+Exemple: "target=thisdirectory" défini le paramètre 'target'
+avec la valeur "thisdirectory".
+
+=item B<--generatorparams>
+
+Affiche la liste des paramètres supportés par le générateur.
+
+=item B<--genlist>
+
+Affiche la liste des générateurs supportés.
+
+=item B<-?>
+
+=item B<-h>
+
+Affiche la liste des options de bib2html.
+
+=item B<--help>
+
+Voir B<--man>.
+
+=item B<--jabref>
+
+Le générateur traduira les groupes de JabRef
+en domaines Bib2HTML.
+
+=item B<--lang> I<nom>
+
+Initialisation de la langue à utiliser.
+
+=item B<--langlist>
+
+Affiche la liste des langues supportées.
+
+=item B<--man>
+
+=item B<--manual>
+
+Affiche la page de manual.
+
+=item B<-o> F<fichier>
+
+=item B<--output> F<fichier>
+
+Initialise le répertoire où la documentation générée sera déposées.
+
+=item B<-p> F<fichier>
+
+=item B<--preamble> F<fichier>
+
+Initialise le nom du F<fichier> à lire et contenant des préambules TeX.
+Vous pouvez utiliser cette option pour définir des commandes LaTeX
+que ne supporte pas encore bib2html.
+
+=item B<--protect> F<shell_wildcard>
+
+Si spécifiée, cette option interdit la suppression dans le répertoire
+destination des sous-fichiers correspondant à l'expression shell
+spécifiée.
+
+=item B<-q>
+
+Mode non verbeux: seuls les messages d'erreurs sont affichés.
+
+=item B<--[no]sortw>
+
+Tri (ou non) les avertissement par ordre croissant des lignes où
+ils apparaissent.
+
+=item B<--stdout>
+
+Force la sortie des fichiers générés sur la sortie standard.
+Cette option est équivalente à C<-d stdout>.
+
+=item B<--svn>
+
+Si spécifiée, cette option interdit la suppression des sous-fichiers
+'.svn' et 'svn' dans le répertoire destination.
+
+=item B<--texcmd>
+
+Affiche la liste des commandes TeX supportées.
+
+=item B<--theme> I<name>
+
+Initialise le thème devant être utilisé par le générateur.
+
+=item B<--themelist>
+
+Affiche la liste des thèmes disponibles.
+
+=item B<-v>
+
+Augmente la verbosité de bib2html.
+
+=item B<--version>
+
+Affiche la version de ce script.
+
+=item B<--[no]warning>
+
+Si faux, les avertissements sont convertis en erreurs.
+
+=item B<--windowtitle> I<text>
+
+Initialise le titre des pages HTML devant apparaître dans
+la barre de titre des fenêtres du navigateur.
+
+=back
+
+=head1 LICENCE
+
+S<GNU Public License (GPL)>
+
+=head1 COPYRIGHT
+
+S<Copyright (c) 1998-06 Stéphane Galland E<lt>galland@arakhne.orgE<gt>>
+
+=head1 CONTRIBUTEURS
+
+=over
+
+=item S<Aurel GABRIS E<lt>L<gabrisa@optics.szfki.kfki.hu>E<gt>>
+
+=item S<Gasper JAKLIC E<lt>L<gasper.jaklic@fmf.uni-lj.si>E<gt>>
+
+=item S<Tobias LOEW E<lt>L<loew@mathematik.tu-darmstadt.de>E<gt>>
+
+=item S<Joao LOURENCO E<lt>L<joao.lourenco@di.fct.unl.pt>E<gt>>
+
+=item S<Dimitris MICHAIL E<lt>L<michail@mpi-sb.mpg.de>E<gt>>
+
+=item S<Luca PAOLINI E<lt>L<paolini@di.unito.it>E<gt>>
+
+=item S<Norbert PREINING E<lt>L<preining@logic.at>E<gt>>
+
+=item S<Cristian RIGAMONTI E<lt>L<cri@linux.it>E<gt>>
+
+=item S<Sebastian RODRIGUEZ E<lt>L<sebastian.rodriguez@utbm.fr>E<gt>>
+
+=item S<Martin P.J. ZINSER E<lt>L<zinser@zinser.no-ip.info>E<gt>>
+
+=item S<Olivier HUGHES E<lt>L<olivier.hugues@gmail.com>E<gt>>
+
+=back
+
+=head1 SEE ALSO
+
+L<bib2html>, L<latex>, L<bibtex>

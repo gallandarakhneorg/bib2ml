@@ -1,0 +1,55 @@
+# French support for the generator HTMLGen.
+#
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
+
+I18N_LANG_ALL_ELEMENTS = Tous les &eacute;l&eacute;ments
+I18N_LANG_ARTICLESINSAMEDOMAINS = Documents dans le m&ecirc;me domaine
+I18N_LANG_FIELD_BIBTEX_VERBATIM = Code BibTeX
+I18N_LANG_FIELD_XML_VERBATIM = Code XML
+I18N_LANG_DEFAULT_TITLE = Bibliographie
+I18N_LANG_DOMAIN_TREE = Arbre des domaines
+I18N_LANG_DOMAINS = Domaines
+I18N_LANG_ENTRY_TYPE_TREE = Liste hi&eacute;rarchique par type d'entr&eacute;e
+I18N_LANG_FRAME_TITLE_AUTHORS = Auteurs
+I18N_LANG_FRAME_TITLE_TYPES = Types
+I18N_LANG_FRAMES = Frames
+I18N_LANG_INDEX = Index
+I18N_LANG_INDEX_COMMENT_ARTICLE = article
+I18N_LANG_INDEX_COMMENT_AUTHOR = auteur
+I18N_LANG_INDEX_COMMENT_BOOKTITLE = title de livre
+I18N_LANG_INDEX_COMMENT_EDITOR = r&eacute;dacteur en chef
+I18N_LANG_INDEX_COMMENT_HOWPUBLISHED = moyen de publication
+I18N_LANG_INDEX_COMMENT_INSTITUTION = institution
+I18N_LANG_INDEX_COMMENT_PUBLISHER = &eacute;diteur
+I18N_LANG_INDEX_COMMENT_SCHOOL = &eacute;cole
+I18N_LANG_INDEX_COMMENT_TITLE = titre
+I18N_LANG_NEXT = Suivant
+I18N_LANG_NO_DATE = Non dat&eacute;
+I18N_LANG_NO_FRAME = Pas de Frame
+I18N_LANG_NO_FRAME_ALERT = <H2>Support des cadres</H2>\
+                           <P>Ce document est con&ccedil; pour &ecirc;tre \
+                           visualis&eacute; avec des cadres (frames). \
+                           Le fait de lire ce message indique que vous \
+                           utilis&eacute; un navigateur ne supportant \
+                           pas les frames.<BR> Lien vers la <A HREF="#1">\
+                           version sans frame.</A>.<BR>\n#2
+I18N_LANG_OVERVIEW = Page principale
+I18N_LANG_PREV = Pr&eacute;d
+I18N_LANG_TREE = Arbre
+I18N_LANG_SMALL_IN = in:&nbsp;#1
+I18N_LANG_SUBMIT_BUG = Soumettre un bug

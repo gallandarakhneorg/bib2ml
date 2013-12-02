@@ -1,0 +1,13 @@
+bib2ml (ex bib2html) from Arakhne.org is a Perl script which permits to create a set of HTML pages, an XML file or a SQL script from a BibTeX file.
+It proposes a convenient look and a lot of features (PDF downloading, scientifical domain tree...).
+
+Official website: http://www.arakhne.org/bib2html/
+
+DISLAIMER FROM AUTHORS:
+I’ve come across mention of other bib2html programs. This program is in no way related to any of them. Other BibTeX-to-HTML tools (non-exhautive list) :
+  * bib2html from Kiri Wagstaff
+  * bib2html from David Kotz (also on CTAN)
+  * bib2html from Eric Marchand
+  * bib2html from Mark Moll and Patrick Riley
+
+See ./doc/index.html for more details.

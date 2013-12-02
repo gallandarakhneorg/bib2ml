@@ -1,0 +1,1320 @@
+<!DOCTYPE HTML PUBLIC "-/W3C/DTD HTML 4.01 Transitional/EN" "http:/www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Documentation of Bib2ML (aka. Bib2HTML)</title>
+  </head>
+  <body bgcolor='#dae6e6'>
+
+    <h1 align="center">Documentation of Bib2ML (aka. Bib2HTML)</h1>
+
+    <p align="center"><small>Written by <a href="mailto:galland@arakhne.org">Stéphane GALLAND</a><br>
+	Version: 2011-07-31<br>
+	Documentation for bib2ml 6.7 and later</small></p>
+
+    <hr width="100%">
+
+    <p><a href="#introduction">1. Introduction/Overview</a></p>
+    <p><a href="#install">2. How to install Bib2ML?</a><ul>
+      <li><a href="#install_require">2.1 Prerequires</a></li>
+      <li><a href="#install_reports">2.2 Installation Reports on Several Operating Systems</a></li>
+      <li><a href="#install_download">2.3 Download</a></li>
+      <li><a href="#install_unix">2.4 Install on Unix Systems</a><ul>
+        <li><a href="#install_unix_uncompress">2.4.1 Uncompress</a></li>
+        <li><a href="#install_unix_copy">2.4.2 Copy the files</a></li>
+        <li><a href="#install_unix_finalize">2.4.3 Finalize the installation</a></li>
+        <li><a href="#install_unix_packages">2.4.4 Simplify your life: use a Linux packages</a></li>
+        </ul></li>
+      <li><a href="#install_win">2.5 Install on Windows&reg; Systems without CygWin</a></li>
+      <li><a href="#install_cygwin">2.6 Install on Windows&reg; Systems with CygWin</a></li>
+    </ul></p>
+    <p><a href="#run">3. How to run Bib2ML?</a></p>
+    <p><a href="#format">4. Some words about the BibTeX format supported by Bib2ML</a><ul>
+      <li><a href="#format_recall">4.1 Short Recall on Bib2TeX's File Format</a></li>
+      <li><a href="#format_types">4.2 Recognized Entry Types</a></li>
+      <li><a href="#format_fields">4.2 Recognized Fields</a></li>
+      <li><a href="#format_string">4.4 Definition of Strings and Preambles</a></li>
+      <li><a href="#format_names">4.5 Definition of the Lists of Names</a></li>
+    </ul></p>
+    <p><a href="#generators">5. Supported Generators</a><ul>
+      <li><a href="#generator_HTML">5.1. Generator HTML</a></li>
+      <li><a href="#generator_Extended">5.2. Generator Extended</a></li>
+      <li><a href="#generator_Domain">5.3. Generator Domain</a></li>
+      <li><a href="#generator_XML">5.4. Generator XML</a></li>
+      <li><a href="#generator_SQL">5.5. Generator SQL</a></li>
+    </ul></p>
+    <p><a href="#themes">6. Supported Themes</a><ul>
+      <li><a href="#theme_Simple">6.1 Theme Simple</a></li>
+      <li><a href="#theme_Dyna">6.2 Theme Dyna</a></li>
+      <li><a href="#theme_contrib">6.3 Contribute</a></li>
+    </ul></p>
+    <p><a href="#languages">7. Supported Languages</a><ul>
+      <li><a href="#languages_contrib">7.1 Contribute</a></li>
+    </ul></p>
+    <p><a href="#license">8. License</a></p>
+    <p><a href="#contributor">9. Contributors</a></p>
+    <p><a href="#bugreport">10. Bug Reporting</a></p>
+
+    <hr width="100%">
+    
+    <a name="introduction"></a><h2>1. Introduction/Overview</h2>
+
+    <p>Many researchers make use of <a href="http://www.cc.gatech.edu/classes/RWL/Projects/citation/Docs/UserManuals/Reference_Pages/bibtex_doc.html">BibTeX</a> for maintaining a comprehensive bibliography which they can then draw on at will when writing papers.</p>
+
+    <p>Bib2ML is a handy utility that converts BibTeX files into HTML pages. You can use it to easily maintain an updated online bibliography. In addition, it is possible to specify, for each bibfile entry, a set of additional information that will appears inside the generated pages.</p>
+
+    <p>The output depends of the used theme. But the pages' hierarchy has a similar structure that the <a href="http://java.sun.com/j2se/javadoc/">JavaDoc</a>'s ones (see the two screenshots generated with the theme <a href="#theme_Simple">Simple</a> and the theme <a href="#theme_Dyna">Dyna</a>). It includes a overview page, an index, an list of scientifical domains in which the BibTeX's entries are...</p>
+
+    <p><strong>Disclaimer:</strong> I've come across mention of other Bib2ML programs. This program is in no way related to any of them. For the curious, it was implemented using Perl.</p>
+
+    <hr width="100%">
+    
+    <a name="install"></a><h2>2. How to install Bib2ML?</h2>
+
+    <a name="install_require"></a><h3>2.1. Prerequires</h3>
+
+    <p>To run BibHTML you must install a Perl interpreter. Bib2ML was tested with Perl v5.8.3 under Linux.</p>
+
+    <p>You must also install the following Perl packages (mostly included inside the default Perl distributions):<ul>
+      <li><code>File::Basename</code></li>
+      <li><code>File::Path</code></li>
+      <li><code>File::Spec</code></li>
+      <li><code>Getopt::Long</code></li>
+      <li><code>Pod::Usage</code></li>
+    </ul></p>
+
+    <a name="install_reports"></a><h3>2.2 Installation Reports on Several Operating Systems</h3>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%" cols="4">
+	<tr><td bgcolor="#cccccc" colspan="4" align="center"><i>Bib2ML and the Operating System's Supports</i></td></tr>
+	<tr><td valign="middle" align="center">GNU/Linux Mandrake</td>
+	  <td valign="middle" align="center"><img src="./validated.gif" alt="ok"></td>
+	  <td valign="middle" align="center">GNU/Linux Debian</td>
+	  <td valign="middle" align="center"><img src="./validated.gif" alt="ok"></td></tr>
+	<tr><td valign="middle" align="center">GNU/Linux Ubuntu<sup>[<a href="#note1">1</a>]</sup></td>
+	  <td valign="middle" align="center"><img src="./validated.gif" alt="ok"></td>
+	  <td valign="middle" align="center">GNU/Linux Slackware</td>
+	  <td valign="middle" align="center"><img src="./work.gif" alt="work"></td></tr>
+	<tr><td valign="middle" align="center">GNU/Linux RedHat</td>
+	  <td valign="middle" align="center"><img src="./work.gif"alt="must work"></td>
+	  <td valign="middle" align="center">Mac OS X</td>
+	  <td valign="middle" align="center"><img src="./work.gif" alt="work"></td></tr>
+	<tr><td valign="middle" align="center">Windows&reg; without Cygwin</td>
+	  <td valign="middle" align="center"><img src="./work.gif" alt="work"></td>
+	  <td valign="middle" align="center">Windows&reg; with Cygwin</td>
+	  <td valign="middle" align="center"><img src="./validated.gif" alt="ok"></td></tr>
+	<tr><td valign="middle" align="center">GNU/Linux Suze</td>
+	  <td valign="middle" align="center"><img src="./not-validated.gif" alt="not validated"></td>
+	  <td valign="middle" align="center">GNU/Linux Mandrivia</td>
+	  <td valign="middle" align="center"><img src="./not-validated.gif" alt="ok"></td></tr>
+	<tr><td valign="middle" align="center">Other UNIX</td>
+	  <td valign="middle" align="center"><img src="./not-validated.gif" alt="not validated"></td>
+	  <td valign="middle" align="center"></td>
+	  <td valign="middle" align="center"></td></tr>
+	<tr><td colspan="4"><img src="./validated.gif" align="center" alt="not validated">:<small> I'd tested Bib2ML and validated it</small><br>
+	    <img src="./work.gif" align="center" alt="work">:<small> one user has reported a success for Bib2ML</small><br>
+	    <img src="./not-validated.gif" align="center" alt="not validated">:<small> No test nor report for a successfull installation and a successfull use of Bib2ML</small><br>
+	    <img src="./mustwork.gif" align="center" alt="must work">:<small> Bib2ML must work as for another operating system</small><br><br>
+	<small><a name="note1"></a>[1] GNU/Linux Ubuntu is the reference operating system for Bib2ML</td></tr>
+      </table></p>
+
+    <a name="install_download"></a><h3>2.3. Download</h3>
+
+    <p>You could download the lastest sources from the Bib2ML web page: <a href="http://www.arakhne.org/bib2ml/">http://www.arakhne.org/bib2ml/</a> or <a href="http://download.tuxfamily.org/arakhne/pool/b/bib2ml/">http://download.tuxfamily.org/arakhne/pool/b/bib2ml/</a>.</p>
+
+    <p>The sources are commonly stored inside an archive called <code>bib2ml-x.x.tar.gz</code> where <code>x.x</code> is the number of the Bib2ML's version.</p>
+
+    <a name="install_unix"></a><h3>2.4 Install on Unix Systems</h3>
+
+    <a name="install_unix_uncompress"></a><h4>2.4.1. Uncompress</h4>
+
+    <p>After downloading the sources' archive, you could uncompress it:
+      <pre><code>
+  $ gzip -d -c bib2ml-x.x.tar.gz | tar -x
+      </code></pre></p>
+
+    <p>This command will create the directory <code>./bib2ml-x.x</code> in which all the sources are.</p>
+
+    <a name="install_unix_copy"></a><h4>2.4.2 Copy the files</h4>
+
+    <p>The main step of the installation is the copy of all the files required by Bib2ML. In fact, only a copy was necessary to install Bib2ML, <i>no compilation</i>.</p>
+
+    <p>I assume that you want to install Bib2ML into the directory <code>/usr/local/lib/bib2ml</code>. Type the following commands to install Bib2ML:<ul>
+      <li>installation of the Perl's packages, copy all the content of the subdirectory <code>./src</code>:
+      <pre><code>
+  $ cd bib2ml-x.x
+  $ mkdir /usr/local/lib/bib2ml
+  $ cp -R -f ./src/* /usr/local/lib/bib2ml/
+	  </code></pre></li>
+      <li>Be sure that the Perl's script was runable:
+	<pre><code>
+  $ chmod ugo+x /usr/local/lib/bib2ml/bib2html.pl
+	  </code></pre></li>
+      <li>Copy some additional documentation's files, if you want:
+	<pre><code>
+  $ cp -f ./COPYING /usr/local/lib/bib2ml/
+  $ cp -f ./Changelog /usr/local/lib/bib2ml/
+  $ cp -f ./AUTHORS /usr/local/lib/bib2ml/
+  $ cp -f ./AUTHORS /usr/local/lib/bib2ml/
+  $ cp -f ./VERSION /usr/local/lib/bib2ml/
+	  </code></pre></li>
+    </ul></p>
+
+    <p>From now you could launch Bib2ML by typing one of the following commands:<ul>
+      <li>if the Perl interpreter is <code>/usr/bin/perl</code>:
+	<pre><code>
+  $ /usr/local/lib/bib2ml/bib2html.pl
+	  </code></pre></li>
+      <li>if the Perl interpreter is not <code>/usr/bin/perl</code>:
+	<pre><code>
+  $ path_to_perl/perl /usr/local/lib/bib2ml/bib2html.pl
+	  </code></pre></li>
+    </ul></p>
+
+    <p>Inside the section where I explain <a href="#run">how to run Bib2ML</a>, I assume that the launching command was <code>bib2html</code>. If you don't apply the commands from the section <a href="#install_unix_finalize">2.4.3</a>, you must replace <code>bib2html</code> by one of the above commands.
+
+    <a name="install_unix_finalize"></a><h4>2.4.3. Finalize the installation</h4>
+
+    <p>To finalize the installation, you could create a symbolic link to the Bib2ML's script from one of the directories inside your <code>PATH</code> (I assume that <code>/usr/local/bin</code> was in your <code>PATH</code>):
+    <pre><code>
+  $ cd /usr/local/bin
+  $ ln -s -f /usr/local/lib/bib2ml/bib2html.pl bib2html
+      </code></pre></p>
+
+    <p>This recommendation will permits to all the users to run Bib2ML very simply.</p>
+
+    <p><u><i>Warning:</i></u> this recommendation works only if the Perl's interpreter was <code>/usr/bin/perl</code>.</p>
+
+    <a name="install_unix_packages"></a><h4>2.4.4. Simplify your life: use a Linux packages</h4>
+
+    <p>You could simplify your life by installing Bib2ML with one of the proposed packages (see the <a href="http://www.arakhne.org/bib2ml/">download page</a> or the <a href="http://download.tuxfamily.org/arakhne.org/pool/b/bib2ml/">download repository</a>) for a Linux distributions.</p>
+
+   <a name="install_win"></a><h3>2.5 Install on Windows&reg; Systems without CygWin</h3>
+
+<p>This section explains how to install Bib2ML on a Windows&reg; operating system <strong>without CygWin</strong> installed. Bib2ML was successfully installed on WinXP with TeXLive2007 and ActivePerl 5.8.8.</p>
+
+<p>The installation steps are the steps (thanks to Dan Luecking for his report):
+<ul>
+<li>Create a directory named <code>scripts\</code> in one of the <code>texmf</code> trees (if one doesn't exist). Make a subdirectory named <code>bib2ml\</code> in <code>scripts\</code> and a subdirectory named <code>man\</code> in <code>scripts\bib2ml\</code>. The obtained directory tree should be:<pre><code>C:\path_to_texmf\texmf\
+  |
+  \- scripts\
+     |
+     \-- man\
+</code></pre></li>
+<li>Copy the contents of <code>src\</code> from the Bib2ML archive and all subdirectories to <code>scripts\bib2ml\</code> preserving the subdirectory structure.</li>
+<li>Copy the contents of <code>man\</code> from the Bib2ML archive to <code>scripts\bib2ml\man\</code>.</li>
+<li>Copy the contents of <code>doc\</code> to the documentation area of the texmf tree.</li>
+<li>create links:<pre><code>C:\path_to_texmf\texmf\scripts\bib2ml\> irun bib2html.pl bib2html.exe
+C:\path_to_texmf\texmf\scripts\bib2ml\> irun bib2sql.pl bib2sql.exe
+C:\path_to_texmf\texmf\scripts\bib2ml\> irun bib2xml.pl bib2xml.exe
+</code></pre></li>
+<li>Copy <code>*.exe</code> to <code>C:\TeXLive\bin\win32\</code></li>
+<li>run <code>texhash</code></li>
+</ul></p>
+
+<p>The links created by <code>irun</code> (part of TeXLive) use the <code>kpsewhich</code> libraries
+and <code>texmf.cnf</code> to find the perl scripts. The default setup should work
+since the search path for scripts is <code>%TEXMF%/scripts/</code>.</p>
+
+   <a name="install_cygwin"></a><h3>2.6 Install on Windows&reg; Systems with CygWin</h3>
+
+<p>This section explains how to install Bib2ML on a Windows&reg; operating system <strong>with CygWin</strong> installed. Bib2ML was successfully installed on WinXP with CygWin 1.5.24.</p>
+
+<p>Bib2ML should be installed on Windows&reg; Systems with CygWin in the same way as for Unix operating systems. Please see the section <a href="#install_unix">2.4 Install on Unix Systems</a> for the details.</p>
+
+    <hr width="100%">
+
+    <a name="run"></a><h2>3. How to run Bib2ML?</h2>
+
+    <p>Bib2ML takes a list of arguments: the names of the bibfiles you wish to process, e.g.
+    <pre><code>
+  $ bib2html firstfile.bib secondfile.bib
+      </code></pre></p>
+
+    <p>The output is written by default is the directory <code>./bib2html</code>.</p>
+
+    <p><strong>SYNOPSYS</strong>
+    <pre><code>
+  bib2html [options] file [file ...]
+      </code></pre></p>
+    
+    <p><strong>OPTIONS</strong>
+      <table border="1" cellspacing="0" cellpadding="5" width="100%">
+	
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>General options</i></td></tr>
+	
+	<tr><td valign="top">
+	    <code>-[no]b</code><br>
+	    <code> --[no]bibtex</code></td><td valign="top">
+	    These options permit to generate (or not) a verbatim of the BibTeX entry.
+	  </td></tr>
+	
+	<tr><td valign="top">
+	    <code>--cvs</code></td><td valign="top">
+            If specified, this option disables the deletion of the subfiles
+            <code>.cvs</code>, <code>CVS</code> and <code>CVSROOT</code> in
+            the output directory.
+	  </td></tr>
+
+	<tr><td valign="top">
+	    <code>--doctitle text</code></td><td valign="top">
+	    Sets the title that appears in the main page.
+	  </td></tr>
+	
+	<tr><td valign="top">
+	    <code>-f</code><br>
+	    <code>--force</code></td><td valign="top">
+	    Forces to overwrite into the output directory.
+	  </td></tr>
+
+	<tr><td valign="top">
+	    <code>-?</code><br>
+	    <code>-h</code></td><td valign="top">
+	    Show the list of supported options.
+	  </td></tr>
+
+	<tr><td valign="top">
+	    <code>--help</code><br>
+	    <code>--man</code><br>
+	    <code>--manual</code></td><td valign="top">
+	    Show the manual page.
+	  </td></tr>
+
+	<tr><td valign="top">
+	    <code>-o directory</code><br>
+	    <code>--output&bnsp;directory</code></td><td valign="top">
+	    Sets the <code>directory</code> in which the pages will be generated.
+	  </td></tr>
+	
+	<tr><td valign="top">
+	    <code>--protect shell_wildcard</code></td><td valign="top">
+            If specified, this option disables the deletion of the subfiles
+            that match the specified shell's wildcard in the output directory.
+	  </td></tr>
+
+	<tr><td valign="top">
+	    <code>--svn</code></td><td valign="top">
+            If specified, this option disables the deletion of the subfiles
+            <code>.svn</code> and <code>svn</code> in the output directory.
+	  </td></tr>
+
+	<tr><td valign="top">
+	    <code>--version</code></td><td valign="top">
+	    Show the version of Bib2ML.
+	  </td></tr>
+
+	<tr><td valign="top">
+	    <code>--windowtitle text</code></td><td valign="top">
+	    Sets the text that appears as the window's title.
+	  </td></tr>
+	
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>Generator options</i></td></tr>
+	
+	<tr><td valign="top">
+	    <code>--d name[=value]</code><br>
+	    <code>--generatorparam name[=value]</code></td><td valign="top">
+	    Sets a generator param. It must be a <code>key=value</code> pair or simply a name.  Example: "<code>target=thisdirectory</code>" defines the parameter <code>target</code> with corresponding value "<code>thisdirectory</code>". The specified parameters which are not supported by the generator are ignored.
+	  </td></tr>
+	
+	<tr><td valign="top">
+	    <code>--g class</code><br>
+	    <code>--generator class</code></td><td valign="top">
+	    Specify the generator to use. <code>class</code> must be a predefined generator's identifier of a valid Perl classname. See <code>--genlist</code> to obtain the list of the predefined generators. The default generator is <code>HTML</code>. See the <a href="#generators">list of supported generators</a> for more details.
+	  </td></tr>
+	
+	<tr><td valign="top">
+	    <code>--generatorparams</code></td><td valign="top">
+	    Shows the list of supported parameters, and their semantics for the selected generator.
+	  </td></tr>
+	
+	<tr><td valign="top">
+	    <code>--genlist</code></td><td valign="top">
+	    Shows the list of the supported generators.
+	  </td></tr>
+	
+	<tr><td valign="top">
+	    <code>--jabref</code></td><td valign="top">
+	    The generator will translate JabRef's groups into Bib2ML domains.
+	  </td></tr>
+
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>Checker options</i></td></tr>
+	
+	<tr><td valign="top">
+	    <code>--[no]checknames</code></td><td valign="top">
+	    Force Bib2ML to check the author's names. This checking includes:<ul>
+	      <li>only the second first names of two authors differ</li>
+	      <li>two last names are a similar syntax (90% or more similar)</li>
+	  </ul></td></tr>
+
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>Theme options</i></td></tr>
+	
+	<tr><td valign="top">
+	    <code>--theme name</code></td><td valign="top">
+	    Specify the theme used by the generator. See the option <code>--themelist</code> to obtain the complete list of supported themes. See the <a href="#themes">list of the supported themes</a> for more details about them.
+	  </td></tr>
+	
+	<tr><td valign="top">
+	    <code>--themelist</code></td><td valign="top">
+	    Shows the list of supported themes. See the <a href="#themes">list of the supported themes</a> for more details about them.
+	  </td></tr>
+
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>Localization options</i></td></tr>
+	
+	<tr><td valign="top">
+	    <code>--lang name</code></td><td valign="top">
+	    Sets the language used by the generator. See <code>--langlist</code> to obtain the list of the supported languages.
+	  </td></tr>
+
+	<tr><td valign="top">
+	    <code>--langlist</code></td><td valign="top">
+	    Shows the list of supported language.
+	  </td></tr>
+
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>TeX options</i></td></tr>
+
+	<tr><td valign="top">
+	    <code>-p file</code><br>
+	    <code>--preamble file</code></td><td valign="top">
+	    Sets the name of the file to read to include some TeX preambles. You could use this option to dynamicaly defined some unsupported LaTeX commands (see <a href="#format_string">how to define and use a preamble</a>).
+	  </td></tr>
+	
+	<tr><td valign="top">
+	    <code>--texcmd</code></td><td valign="top">
+	    Shows the list of supported LaTeX commands. The supported TeX commands permits to create a specific HTML output accordingly to the TeX semantic.
+	  </td></tr>
+	
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>Logging options</i></td></tr>
+
+	<tr><td valign="top">
+	    <code>-q</code></td><td valign="top">
+	    Don't be verbose: only error messages are displayed.
+	  </td></tr>
+	
+	<tr><td valign="top">
+	    <code>--[no]sortw</code></td><td valign="top">
+	    Shows (or not) a sorted list of warnings by appearence line.  For example, this could be use to obtain a better output for a parsing program.
+	  </td></tr>
+	
+	<tr><td valign="top">
+	    <code>-v</code></td><td valign="top">
+	    Be more verbose. Each time this option was specified, the verbosing level was increazed.
+	  </td></tr>
+	
+	<tr><td valign="top">
+	    <code>--[no]warning</code></td><td valign="top">
+	    If false, the warning are converted to errors. An error stops the program when it occurs. A warning does not stops the program.
+	  </td></tr>
+	
+      </table></p>
+    
+    <hr width="100%">
+
+    <a name="format"></a><h2>4. Some words about the BibTeX format supported by Bib2ML</h2>
+    
+    Bib2ML use as input files which respest as much as possible the <a href="http://www.cc.gatech.edu/classes/RWL/Projects/citation/Docs/UserManuals/Reference_Pages/bibtex_doc.html">BibTeX file format</a>. It add more restrictive constraints than this <i>official</i> format, and includes some additional fields.
+    
+    <a name="format_recall"></a><h3>4.1 Short Recall on Bib2TeX's File Format</h3>
+    
+    <p>To be recognized by Bib2ML, each entry must begin with an '<code>@</code>', immediately followed by the type of entry it is (see the <a href="#format_types">list of recognized entry types</a>), immediately followed by a '<code>{</code>'. It will then process the fields you've specified for that entry until it hits the closing '<code>}</code>' (see the <a href="#format_fields">list of recognized fields</a>).  The format then looks something like this:
+    <pre><code>
+  @entrytype{entry_key,
+    fieldname1 = "Contents",
+    fieldname2 = {Contents},
+    fieldname3 = contents,
+    ...
+  }
+      </code></pre></p>
+    
+    <p>The first information required by the BibTeX's file format is the identifier of the entry. This <code>entry_key</code> must be unique and, in most of the cases, it is composed by the author's name, the publication year... In <a href="http://www.latex-project.org/">LaTeX</a>, this key was used to reference this bibliographical entry.</p>
+    
+    <p>Three types of field contents are valid, as shown here.  In <code>fieldname1</code>, the contents are enclosed in quotes; in <code>fieldname2</code> they are enclosed in curly braces, and in <code>fieldname3</code> there are no surrounding characters.  The third type is often used to specify pre-defined <a href="#format_string">string values</a>, and any value specified in this way will be compared to the list of <code>@strings</code> you've defined for a possible match (if there is a match, it will be expanded out to the full value of the <code>@string</code>).</p>
+    
+    <p>Any amount of whitespace can come between the <code>fieldname</code> and the '<code>=</code>', or between the '<code>=</code>' and the contents. In addition, Bib2ML can handle nested <code>{}</code>'s in the contents of a field.</p>
+    
+    <hr width="100%">
+
+    <a name="format_recall"></a><h3>4.2 Recognized Entry Types</h3>
+    
+    <p>Bib2ML recognizes the following bibliography entry types (by the generator <a href="#generator_HTML">HTML</a>):<ul>
+      <li><code>@article</code>: an article inside a national or international <i>journal</i>, e.g. <i>International Journal of Production Economics</i>.</li>
+      <li><code>@book</code>: a <i>book</i>, e.g. <i>Les Systèmes Multi-Agents</i> by Professor Jacques Ferber.</li>
+      <li><code>@booklet</code>: a <i>standalone part</i> of a book, i.e. a part with its own author, title...</li>
+      <li><code>@inbook</code>: a <i>chapter</i> or a <i>part</i> of a book.</li>
+      <li><code>@incollection</code>: an article inside a <i>collection</i> of national or international journals, e.g. <i>Lecture Notes on Artificial Intelligence</i>.</li>
+      <li><code>@inproceedings</code>: a <i>paper</i> inside the proceedings of an national ou international conference, e.g. <i>European Simulaton Multiconferences</i>.</li>
+      <li><code>@manual</code>: a <i>technical manual</i> published (or not) by an university. <i>Don't be confused</i> with the technical report which is a report, not a manual.</li>
+      <li><code>@mastersthesis</code>: a <i>student thesis</i> made under the authority of an university of a school, e.g. engineering's report.</li>
+      <li><code>@misc: see the note below</code></li>
+      <li><code>@phdthesis</code>: a <i>research thesis</i> made under the authority of a laboratory, an institution, an university, e.g. PhD thesis, Doctorat thesis...</li>
+      <li><code>@proceedings</code>: a book that contains <i>all the papers</i> of a conference. <i>Don't choose</i> if you want a paper inside a conference (see the <code>@inproceedings</code> instead), e.g. <i>Proceedings of the International Conference on Multi-Agent Systems</i>.</li>
+      <li><code>@techreport</code>: a <i>technical report</i> published by an university. In general a technical report has a internal number which is specific to the institution. <i>Don't be confused</i> with the technical manual which is a manual, not a report.</li>
+      <li><code>@unpublished: a document which are never published.</code></li>
+    </ul></p>
+
+    <p>Any other entry type will be proceeded as <code>@misc</code>.</p>
+
+    <p><u>Note about the type <code>@misc</code>:</u><br>
+      this entry type is considered as the default. It requires the following fields: <code>author</code> and <code>year</code>. This constraint is not from the definition of the standard BibTeX file format. But it was introduced for the page's generation of Bib2ML.</p>
+
+    <p>I welcome requests to support other entry types. The generators could support their own entry types. See the section about <a href="#generators">supported generator</a> for more details</p>
+
+    <hr width="100%">
+
+    <a name="format_fields"></a><h3>4.3 Recognized Fields</h3>
+
+    <p>Bib2ML recognizes the following bibliography field types (by the generator <a href="#generator_HTML">HTML</a>):<ul>
+      <li><code>address</code></li>
+      <li><code>annote</code></li>
+      <li><code>author</code> (see the <a href="#format_names">definitions of the names</a>)</li>
+      <li><code>booktitle</code></li>
+      <li><code>chapter</code></li>
+      <li><code>comments</code> (alias <code>annote</code>)</li>
+      <li><code>edition</code></li>
+      <li><code>editor</code> (see the <a href="#format_names">definitions of the names</a>)</li>
+      <li><code>howpublished</code></li>
+      <li><code>institution</code></li>
+      <li><code>month</code></li>
+      <li><code>note</code></li>
+      <li><code>number</code></li>
+      <li><code>organization</code></li>
+      <li><code>pages</code></li>
+      <li><code>publisher</code></li>
+      <li><code>school</code></li>
+      <li><code>series</code></li>
+      <li><code>title</code></li>
+      <li><code>type</code></li>
+      <li><code>volume</code></li>
+      <li><code>year</code></li>
+    </ul></p>
+
+    <p>The real support of a field depends on the entry type in which it appears. The following table explains where the fields are needed and where they are optional.</p>
+
+    <p><a name="table_HTMLfields"></a><table border="1" cellspacing="0" cellpadding="2" width="100%">
+	<tr bgcolor="#cccccc"><td colspan="13" align="center"><small><i>Supported Fields by the Generator HTML</i></small></td></tr>
+	<tr bgcolor="#cccccc"><td><!-- --></td>
+	  <td align="center"><small>article</small></td>
+	  <td align="center"><small>book</small></td>
+	  <td align="center"><small>booklet</small></td>
+	  <td align="center"><small>inbook</small></td>
+	  <td align="center"><small>inproceeding<br>incollection</small></td>
+	  <td align="center"><small>manual</small></td>
+	  <td align="center"><small>masterthesis</small></td>
+	  <td align="center"><small>misc</small></td>
+	  <td align="center"><small>phdthesis</small></td>
+	  <td align="center"><small>proceedings</small></td>
+	  <td align="center"><small>techreport</small></td>
+	  <td align="center"><small>unpublished</small></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>address</small></td>
+	  <td align="center"><!-- article --></td>
+	  <td align="center"><!-- book --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- booklet --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inbook --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inproceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- manual --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- masterthesis --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- proceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- techreport --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>annote</small></td>
+	  <td align="center"><!-- article --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- book --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- booklet --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inbook --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inproceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- manual --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- masterthesis --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- misc --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- phdthesis --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- proceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- techreport --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- unpublished --><img src="./optional.gif" alt="O"></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>author</small></td>
+	  <td align="center"><!-- article --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- book --><img src="./requiredor.png" alt="RO"></td>
+	  <td align="center"><!-- booklet --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- inbook --><img src="./requiredor.png" alt="RO"></td>
+	  <td align="center"><!-- inproceedings --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- manual --><img src="./required.gif" alt="O"></td>
+	  <td align="center"><!-- masterthesis --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- misc --><img src="./requiredor.png" alt="RO"></td>
+	  <td align="center"><!-- phdthesis --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- proceedings --><img src="./requiredor.png" alt="RO"></td>
+	  <td align="center"><!-- techreport --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- unpublished --><img src="./required.gif" alt="R"></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>booktitle</small></td>
+	  <td align="center"><!-- article --></td>
+	  <td align="center"><!-- book --></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --></td>
+	  <td align="center"><!-- inproceedings --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --></td>
+	  <td align="center"><!-- techreport --></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>chapter</small></td>
+	  <td align="center"><!-- article --></td>
+	  <td align="center"><!-- book --></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- inproceedings --></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --></td>
+	  <td align="center"><!-- techreport --></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>edition</small></td>
+	  <td align="center"><!-- article --></td>
+	  <td align="center"><!-- book --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inproceedings --></td>
+	  <td align="center"><!-- manual --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --></td>
+	  <td align="center"><!-- techreport --></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>editor</small></td>
+	  <td align="center"><!-- article --></td>
+	  <td align="center"><!-- book --><img src="./requiredor2.png" alt="RO"></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --><img src="./requiredor2.png" alt="RO"></td>
+	  <td align="center"><!-- inproceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --><img src="./requiredor2.png" alt="RO"></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --><img src="./requiredor2.png" alt="RO"></td>
+	  <td align="center"><!-- techreport --></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>howpublished</small></td>
+	  <td align="center"><!-- article --></td>
+	  <td align="center"><!-- book --></td>
+	  <td align="center"><!-- booklet --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inbook --></td>
+	  <td align="center"><!-- inproceedings --></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --></td>
+	  <td align="center"><!-- techreport --></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>institution</small></td>
+	  <td align="center"><!-- article --></td>
+	  <td align="center"><!-- book --></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --></td>
+	  <td align="center"><!-- inproceedings --></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --></td>
+	  <td align="center"><!-- techreport --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>journal</small></td>
+	  <td align="center"><!-- article --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- book --></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --></td>
+	  <td align="center"><!-- inproceedings --></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --></td>
+	  <td align="center"><!-- techreport --></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>month</small></td>
+	  <td align="center"><!-- article --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- book --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- booklet --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inbook --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inproceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- manual --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- masterthesis --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- misc --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- phdthesis --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- proceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- techreport --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>note</small></td>
+	  <td align="center"><!-- article --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- book --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- booklet --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inbook --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inproceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- manual --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- masterthesis --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- misc --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- phdthesis --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- proceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- techreport --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- unpublished --><img src="./required.gif" alt="R"></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>number</small></td>
+	  <td align="center"><!-- article --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- book --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inproceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- techreport --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>organization</small></td>
+	  <td align="center"><!-- article --></td>
+	  <td align="center"><!-- book --></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --></td>
+	  <td align="center"><!-- inproceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- manual --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- techreport --></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>pages</small></td>
+	  <td align="center"><!-- article --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- book --></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inproceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --></td>
+	  <td align="center"><!-- techreport --></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>publisher</small></td>
+	  <td align="center"><!-- article --></td>
+	  <td align="center"><!-- book --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- inproceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- techreport --></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>school</small></td>
+	  <td align="center"><!-- article --></td>
+	  <td align="center"><!-- book --></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --></td>
+	  <td align="center"><!-- inproceedings --></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- proceedings --></td>
+	  <td align="center"><!-- techreport --></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>series</small></td>
+	  <td align="center"><!-- article --></td>
+	  <td align="center"><!-- book --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inproceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- techreport --></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>title</small></td>
+	  <td align="center"><!-- article --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- book --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- booklet --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- inbook --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- inproceedings --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- manual --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- masterthesis --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- misc --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- phdthesis --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- proceedings --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- techreport --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- unpublished --><img src="./required.gif" alt="R"></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>type</small></td>
+	  <td align="center"><!-- article --></td>
+	  <td align="center"><!-- book --></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inproceedings --></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- proceedings --></td>
+	  <td align="center"><!-- techreport --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>volume</small></td>
+	  <td align="center"><!-- article --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- book --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- booklet --></td>
+	  <td align="center"><!-- inbook --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- inproceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- manual --></td>
+	  <td align="center"><!-- masterthesis --></td>
+	  <td align="center"><!-- misc --></td>
+	  <td align="center"><!-- phdthesis --></td>
+	  <td align="center"><!-- proceedings --><img src="./optional.gif" alt="O"></td>
+	  <td align="center"><!-- techreport --></td>
+	  <td align="center"><!-- unpublished --></td>
+	</tr>
+	<tr><td bgcolor="#cccccc"><small>year</small></td>
+	  <td align="center"><!-- article --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- book --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- booklet --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- inbook --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- inproceedings --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- manual --><img src="./required.gif" alt="O"></td>
+	  <td align="center"><!-- masterthesis --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- misc --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- phdthesis --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- proceedings --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- techreport --><img src="./required.gif" alt="R"></td>
+	  <td align="center"><!-- unpublished --><img src="./required.gif" alt="R"></td>
+	</tr>
+
+	<tr><td colspan="13"><img src="./required.gif" alt="R" align="center">: this field was required by Bib2ML<br>
+	    <img src="./requiredor.png" alt="RO" align="center">: this field was required by Bib2ML if the other required field was not given<br>
+	    <img src="./requiredor2.png" alt="RO" align="center">: this field was required by Bib2ML if the other required field was not given<br>
+	    <img src="./optional.gif" alt="O" align="center">: this field was not required by Bib2ML<br>
+	    When a cell was empty, this field is ignored by Bib2ML</td></tr></table></p>
+
+    <p>I welcome requests to support other fields. The generators could support their own. See the section about <a href="#generators">supported generator</a> for more details</p>
+
+    <a name="format_string"></a><h3>4.4 Definition of Strings and Preambles</h3>
+
+    <p>Like BibTeX, Bib2ML also handles arbitrary <code>@string</code> definitions, which can be used in any entry field, e.g.
+    <pre><code>
+  @string{acl = "Association for Computational Linguistics"}
+  ...
+  @proceedings{PROC,
+    publisher = acl,
+    ...
+  }
+      </code></pre></p>
+
+    <p>Bib2ML also supports the definition of TeX preambles. The TeX preambles are TeX commands which are evaluated and ran before any treatement on the BibTeX entries. The definition of a preamble is done with <code>@preamble</code>, e.g.
+    <pre><code>
+  @preamble{\def\th{\ensuremath{^{th}}}}
+  ...
+      </code></pre></p>
+
+    <p>The TeX commands which can be put inside a <code>@preamble</code> are limited to the commands supported by Bib2ML (see the command-line option <code>--texcmd</code> to obtain a list).</p>
+
+    <a name="format_names"></a><h3>4.5 Definition of the Lists of Names</h3>
+
+    <p>In some fields (e.g. <code>author</code> and <code>editor</code>) you must specify a list of names. This list is composed of names separated by the keyword <code>AND</code>. Each name must respect one of the following syntaxes:<ul>
+      <li><code>[von] Last, jr, First</code></li>
+      <li><code>First [von] Last, jr</code></li>
+      <li><code>[von] Last, First [jr]</code></li>
+      <li><code>First [von] Last [jr]</code></li>
+    </ul></p>
+
+    <p>If present the <code>jr</code> part must be one of '<code>junior</code>', '<code>jr.</code>', '<code>jr</code>', '<code>senior</code>', '<code>sen.</code>', '<code>sen</code>', '<code>esq.</code>', '<code>esq</code>', '<code>phd.</code>' and '<code>phd</code>'.
+
+    <p><u>Good Example:</u> <code>DUPONT, Henri and Pierre, Alain Michel and Jim WASHINGTON jr.
+	<table border="1" cellspacing="0" cellpadding="0">
+	  <tr><td><code>DUPONT, </code></td><td><code>Henri</code></td><td><code> and </code></td><td><code>Pierre, </code></td><td><code>Alain Michel</code></td><td><code> and </code></td><td><code>Jim </code></td><td><code>WASHINGTON </code></td><td><code>jr.</code></td></tr>
+	  <tr><td><code>last</code></td><td><code>first</code></td><td><code></code></td><td><code>last</code></td><td><code>first</code></td><td><code></code></td><td><code>first</code></td><td><code>fast</code></td><td><code>jr</code></td></tr>
+	</table></p>
+
+    <p><u>Bad Example:</u> <code>Henri DUPONT, Alain Michel Pierre and Jim WASHINGTON jr.
+	<table border="1" cellspacing="0" cellpadding="0">
+	  <tr><td><code>Henri DUPONT, </code></td><td><code>Alain Michel Pierre</code></td><td><code> and </code></td><td><code>Jim </code></td><td><code>WASHINGTON </code></td><td><code>jr.</code></td></tr>
+	  <tr><td><code>last</code></td><td><code>first</code></td><td><code></code></td><td><code>first</code></td><td><code>fast</code></td><td><code>jr</code></td></tr>
+	</table></p>
+
+    <hr width="100%">
+
+    <a name="generators"></a><h2>5. Supported Generators</h2>
+
+    <p>The generator is one of the major module of Bib2ML (with the BibTeX parser). It aims to create the HTML files from the internal data structure given by the parser. It is the generator which apply the canvas of the generated pages (use of 3 frames, links to the overview the index from the header of each entry's page...).</p>
+
+    <p>In addition to the usable generator listed below, Bib2ML includes an abstract generator which is the basis of all the others.</p>
+
+    <a name="generator_HTML"></a><h3>5.1. Generator HTML</h3>
+
+    <p>The generator called <code>HTML</code> is the default HTML generator of Bib2ML. Its purpose is to generate a basic content which is quiet similar to a lot of BibTeX to HTML tools (such as the LaTeX distribution's <code>bib2html</code>).</p>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr><td bgcolor="#cccccc" align="center"><i>SUPPORTED FIELDS</i></td></tr>
+	<tr><td valign="top">
+	    See this <a href="#table_HTMLfields">table</a>.
+	  </td></tr>
+      </table></p>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr><td bgcolor="#cccccc" align="center"><i>FEATURES</i></td></tr>
+	<tr><td valign="top">
+	    The generated result in based on <i>three frames</i>:<ul>
+	      <li>upper-left frame: a brief overview which permits to do some high-level selection,</li>
+	      <li>lower-left frame: a overview of all the entries which are selected accordingly to the selection made inside the upper-left frame,</li>
+	      <li>right frame: the main frame which aims to display all the informations (overview, entry's pages...).</li>
+	    </ul>
+	  </td></tr>
+	<tr><td valign="top">
+	    One page per <i>entry</i>:<ul>
+	      <li>All the required and optional fields listed in <a href="#table_HTMLfields">this table</a> are displayed inside a table (except the field <code>annote</code>).</li>
+	      <li>Display the content of the field <code>annote</code> (or <code>comments</code>) inside a section just below the field's table.</li>
+	      <li>If the command-line option <code>--bitex</code> was specified (default), a verbatim output of the BibTeX entry was generated in its own section.</li>
+	    </ul>
+	  </td></tr>
+	<tr><td valign="top">
+	    One short-overview page (inside the upper-left frame) which contains all the entry's types.
+	  </td></tr>
+	<tr><td valign="top">
+	    One short-overview page (inside the lower-left frame) which contains all the entries grouped by year and sorted by authors and publication date.
+	  </td></tr>
+	<tr><td valign="top">
+	    One <i>overview</i> page (inside the right frame) which contains a list of all the entries grouped by year and sorted by authors and publication date.
+	  </td></tr>
+	<tr><td valign="top">
+	    One <i>tree-view</i> page which contains all the entries grouped by publication's type and sorted by authors and publication date. This page could be overwriting by subclasses of this generator to provide antoher kind of tree-view.
+	  </td></tr>
+	<tr><td valign="top">
+	    A set of <i>index</i> pages. The index lists the significant words found inside the BibTeX file and propose a link to the entry's page where this word is. The generator produces one HTML page for each letter of the alphabet.<br>
+	    A significant word is a word which has more than 2 letters and which are not known are not-significant by the Bib2ML's internal database.
+	  </td></tr>
+      </table></p>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>GENERATOR'S PARAMETERS</i></td></tr>
+	<tr><td valign="top"><code>author-regexp=<u>expr</u></code></td>
+	  <td valign="top">
+	    A <a href="http://www.perldoc.com/perl5.8.4/pod/perlre.html">Perl's regular expression</a> (which is case-insensitive) against which the
+	    lastname of an author is matched. If the author matches, (s)he is included in the overview window author list.
+	  </td></tr>
+	<tr><td valign="top"><code>hideindex</code></td>
+	  <td valign="top">
+	    If presents, hide the index link and do not generate the index files.
+	  </td></tr>
+	<tr><td valign="top"><code>html-generator=<u>encoding</u></code></td>
+	  <td valign="top">
+	    This parameter is a string that correspond to the character encoding of the generated HTML pages.
+	    The default encoding is <code>ISO-8859-1</code>.
+	  </td></tr>
+	<tr><td valign="top"><code>max-names-overview=<u>integer</u></code></td>
+	  <td valign="top">
+	    An integer which is the maximal count of authors in the overview page.
+	  </td></tr>
+	<tr><td valign="top"><code>max-names-list=<u>integer</u></code></td>
+	  <td valign="top">
+	    An integer which is the maximal count of authors on the listing in the lower-left frame.
+	  </td></tr>
+	<tr><td valign="top"><code>newtype=<u>expr</u></code></td>
+	  <td valign="top">
+	    A comma separated list of new publication's types, with singular and plural label.<br>
+	    <p>The value must respect the format: <code>type:Singular:Plural[,type:Singular:Plural...]</code><br>
+	      where <code>type</code> is the identifier of the new type, <code>Singular</code> is the label used
+	      when this type has zero or one entry, <code>Plurial</code> is the label used when this type
+	      has two or more entries.</p>
+	    Each new type will appears inside the overview's pages. But this feature does not explain
+	    how to generate the content of the corresponding entry's pages. So, the entry's pages will
+	    be generated as for <code>@misc</code> entries (except if you define your own generator).
+	  </td></tr>
+	<tr><td valign="top"><code>stdout</code></td>
+	  <td valign="top">
+	    If presents, this option force Bib2ML to output the files onto the standard output instead of files.
+	  </td></tr>
+	<tr><td valign="top"><code>type-matching=<u>expr</u></code></td>
+	  <td valign="top">
+	    A coma separated list of items which inititalizes an associative array of type entry mappings.<br>
+	    Each item must respect one of the following syntaxes:<ul>
+	      <li><code>type =&gt; type</code> (since the version 1.3)</li>
+	      <li><code>type -&gt; type</code> (since the version 1.3)</li>
+	      <li><code>type &gt; type</code> (since the version 1.3)</li>
+	      <li><code>type , type</code> (original syntax)</li>
+	    </ul>
+	    For example <code>incollection,article,inproceedings,article</code> means that all the
+	    BibTeX's <code>@incollection</code> entries will be displayed as <code>@article</code> entries.
+	    The same thing for the <code>@inproceedings</code>.<br>
+	    So, the specified value for this parameters <strong>must</strong> be a list of pairs.<br>
+	    An alternative syntax is: <code>type=&gt;type[,type=&gt;type...]</code>. With the same example a above,
+	    the value should be <code>incollection=&gt;article,inproceedings=&gt;article</code>.
+	  </td></tr>
+	<tr><td valign="top"><code>xml-verbatim</code></td>
+	  <td valign="top">
+	    If this parameter was given, Bib2ML will generate a verbatim text that corresponds to the XML specification of the entries. This text is put just below the BibTeX verbatim text.
+	  </td></tr>
+      </table></p>
+
+    <a name="generator_Extended"></a><h3>5.2. Generator Extended</h3>
+
+    <p>The generator <code>Extended</code> is an extension of <code>HTML</code>. Its purpose is to provide some additional features.</p>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>NEW SUPPORTED FIELDS</i></td></tr>
+	<tr><td valign="top"><code>abstract</code></td>
+	  <td valign="top">is the abstract associated to the entry (in most of the case, it is written
+	    at the begining of the paper's article).
+	  </td></tr>
+	<tr><td valign="top"><code>adsurl</code></td>
+	  <td valign="top">is an URL from the Astrophysics Citation Reference System which is corresponds
+            to the entry. This field supports the URL's protocols
+	    <code>ftp:</code>, <code>file:</code>, <code>https:</code>, 
+	    <code>gopher:</code>, <code>mailto:</code> and <code>http:</code> (this last is the default).
+	  </td></tr>
+	<tr><td valign="top"><code>doi</code></td>
+	  <td valign="top">is the Document Object Identifier (DOI) which is assumed to be an URL
+	    linked to a document on Internet. This field supports the URL's protocols
+	    <code>ftp:</code>, <code>file:</code>, <code>https:</code>, 
+	    <code>gopher:</code>, <code>mailto:</code> and <code>http:</code> (this last is the default).
+	  </td></tr>
+	<tr><td valign="top"><code>isbn</code></td>
+	  <td valign="top">is the <a href="http://www.isbn.org/">ISBN number</a> of the entry.
+	  </td></tr>
+	<tr><td valign="top"><code>issn</code></td>
+	  <td valign="top">is the <a href="http://www.issn.org/">ISSN number</a> of the entry.
+	  </td></tr>
+	<tr><td valign="top"><code>keywords</code></td>
+	  <td valign="top">is list of the keywords associated to the entry (in most of the case, they
+	    are mentionned at the begining of the paper's article).
+	  </td></tr>
+	<tr><td valign="top"><code>localfile</code></td>
+	  <td valign="top">is the path (on your local host) to a electronical version of
+	    the document that is described by the entry (I recommended to put only
+	    a PDF or a Postscript file here).<br>
+	    If this field was present and the corresponding file was found, Bib2ML
+	    generates a link to this into the entry's page.<br>
+	    See the parameters of this generator to influence the default location of the
+	    electronical files.
+	  </td></tr>
+	<tr><td valign="top"><code>readers</code></td>
+	  <td valign="top">is a list of people who read this entry. The value of this field <strong>must</strong>
+	    support the <a href="#format_names">BibTeX's syntax for names</a>.
+	  </td></tr>
+	<tr><td valign="top"><code>url</code></td>
+	  <td valign="top">is an URL associated to the entry. This field supports the URL's protocols
+	    <code>ftp:</code>, <code>file:</code>, <code>https:</code>, 
+	    <code>gopher:</code>, <code>mailto:</code> and <code>http:</code> (this last is the default).
+	  </td></tr>
+	<tr><td valign="top"><code>pdf</code></td>
+	  <td valign="top">is an URL associted to the entry with
+	corresponds to a PDF file. This field supports the URL's protocols
+	    <code>ftp:</code>, <code>file:</code>, <code>https:</code>, 
+	    <code>gopher:</code>, <code>mailto:</code> and <code>http:</code>.
+	  </td></tr>
+      </table></p>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr><td bgcolor="#cccccc" align="center"><i>NEW FEATURES</i></td></tr>
+	<tr><td valign="top">
+	    In the entry's pages:<ul>
+	      <li>The new fields are added into the generated table (except for <code>abstract</code> and <code>keywords</code>).</li>
+	      <li>The values of the fields <code>abstract</code> and <code>keywords</code> are put inside a specific section.</li>
+	    </ul>
+	  </td></tr>
+	<tr><td valign="top">
+	    The overview page is extended with the list of all the authors.
+	  </td></tr>
+      </table></p>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>NEW GENERATOR'S PARAMETERS</i></td></tr>
+	<tr><td valign="top"><code>absolute-source=<u>path</u></code></td>
+	  <td valign="top">
+	    is the absolute path of the directory where the downloadable documents could be found
+	    (see the field <code>localfile</code> for details about the downloadable documents).<br>
+	    The parameters <code>absolute-source</code>, <code>relative-source</code> and
+	    <code>target-url</code> are mutually exclusive.
+	  </td></tr>
+	<tr><td valign="top"><code>backslash</code></td>
+	  <td valign="top">
+	  if presents, indicates that backslashes will be removed from the link fields (url,ftp...).
+	  </td></tr>
+	<tr><td valign="top"><code>doc-repository=<u>path</u></code></td>
+	  <td valign="top">
+	    if presents, indicates the directory where are stored the electronical documents. This option assumes hat electronical documents have a name similar to the BibTeX key. For example the entry with the key <code>Galland.esm00</code> could have an associated electronical document with its name equals to one of <code>Galland.esm00.pdf</code>, <code>Galland.esm00.PDF</code>, <code>Galland.esm00.ps</code> or <code>Galland.esm00.PS</code>.
+	  </td></tr>
+	<tr><td valign="top"><code>nodownload</code></td>
+	  <td valign="top">
+	    if presents, indicates that no link to the electronic
+	    documents will be generated. By extension, if
+	    presents no copy of there files will be made.
+	  </td></tr>
+	<tr><td valign="top"><code>relative-source=<u>path</u></code></td>
+	  <td valign="top">
+	    is the relative path of the directory where the downloadable documents could be found
+	    (see the field <code>localfile</code> for details about the downloadable documents).
+	    This path is relative to the directory where the BibTeX file is located.<br>
+	    The parameters <code>absolute-source</code>, <code>relative-source</code> and
+	    <code>target-url</code> are mutually exclusive.
+	  </td></tr>
+	<tr><td valign="top"><code>target-url=<u>url</u></code></td>
+	  <td valign="top">
+	    is an URL where the downloadable documents could be find. It means that
+	    if this URL was specified, Bib2ML assumes that all the files
+	    could be download from the specified URL. It means also that
+	    no copy will be made by Bib2ML.<br>
+	    The parameters <code>absolute-source</code>, <code>relative-source</code> and
+	    <code>target-url</code> are mutually exclusive.
+	  </td></tr>
+      </table></p>
+
+    <a name="generator_Domain"></a><h3>5.3. Generator Domain</h3>
+
+    <p>The generator <code>Domain</code> is an extension of <code>Extended</code>. Its purpose is to provide some additional features about the scientifical domains of the entries.</p>
+
+    <p>This generator introduces the concept of &laquo;domain&raquo; which corresponds to the name of a scientifical context/domain. An entry could be inside one or more domains.</p>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>NEW SUPPORTED FIELDS</i></td></tr>
+	<tr><td valign="top"><code>domain</code></td>
+	  <td valign="top">is the first domain in which this entry was.<br>
+	    This field does not overset the previous domain's setting (except for
+	    <code>domain</code>).
+	  </td></tr>
+	<tr><td valign="top"><code>domains</code></td>
+	  <td valign="top">is a list of domains in which this entry was. The domain's separator is the character '<code>:</code>'.<br>
+	    This field does not overset the previous domain's setting (except for
+	    <code>domains</code>).
+	  </td></tr>
+	<tr><td valign="top"><code>nddomain</code></td>
+	  <td valign="top">is the second domain in which this entry was.<br>
+	    This field does not overset the previous domain's setting (except for
+	    <code>nddomain</code>).
+	  </td></tr>
+	<tr><td valign="top"><code>rddomain</code></td>
+	  <td valign="top">is the third domain in which this entry was.<br>
+	    This field does not overset the previous domain's setting (except for
+	    <code>rddomain</code>).
+	  </td></tr>
+      </table></p>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr><td bgcolor="#cccccc" align="center"><i>NEW FEATURES</i></td></tr>
+	<tr><td valign="top">
+	    Inside the entry's page, a section with the other entries inside the same domains was added. The entries of this list are grouped by domains and sorted by authors.
+	  </td></tr>
+	<tr><td valign="top">
+	    One <i>domain-view</i> page which contains all the entries grouped by domain and sorted by authors and publication date. This page could be overwriting by subclasses of this generator to provide antoher kind of domain-view.
+	  </td></tr>
+      </table></p>
+
+    <a name="generator_XML"></a><h3>5.4. Generator XML</h3>
+
+    <p>The generator called <code>XML</code> is the default XML generator of Bib2ML. Its purpose is to generate a basic content which respects the XML <a href="./bibtexml_dtd.html">DTD</a> defined by <a href="http://bibtexml.sf.net/">BibteXML</a>.</p>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr><td bgcolor="#cccccc" align="center"><i>SUPPORTED FIELDS</i></td></tr>
+	<tr><td valign="top">
+	    See this <a href="#table_HTMLfields">table</a> and the definition of the BibteXML's <a href="./bibtexml_dtd.html">DTD</a>.
+	  </td></tr>
+      </table></p>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>GENERATOR'S PARAMETERS</i></td></tr>
+	<tr><td valign="top"><code>stdout</code></td>
+	  <td valign="top">
+	    If presents, this option force Bib2ML to output the files onto the standard output instead of files.
+	  </td></tr>
+	<tr><td valign="top"><code>xml-encoding=<u>encoding</u></code></td>
+	  <td valign="top">
+	    is character encoding which will be put into the header of the generated XML file.
+            All values for the character encoding supported by the XML specifications are allowed (<code>ISO-8859-1</code>, <code>UTF8</code>...). The default value is <code>ISO-8859-1</code>.
+	  </td></tr>
+      </table></p>
+
+    <a name="generator_SQL"></a><h3>5.5. Generator SQL</h3>
+
+    <p>The generator called <code>SQL</code> is the default SQL generator of Bib2ML. Its purpose is to generate a basic content which respects the SQL schema illustrated by the following figure.</p>
+
+    <p style="text-align: center;"><a href="./sql_schema.png"><img src="./sql_schema_small.png"></a></p>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr><td bgcolor="#cccccc" align="center"><i>SUPPORTED FIELDS</i></td></tr>
+	<tr><td valign="top">
+	    See this <a href="#table_HTMLfields">table</a>.
+	  </td></tr>
+      </table></p>
+
+    <p><table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr><td bgcolor="#cccccc" colspan="2" align="center"><i>GENERATOR'S PARAMETERS</i></td></tr>
+	<tr><td valign="top"><code>sql-encoding=<u>name</u></code></td>
+	  <td valign="top">
+	    Defines the character encoding used to generate the SQL script.
+	  </td></tr>
+	<tr><td valign="top"><code>sql-engine=<u>name</u></code></td>
+	  <td valign="top">
+	    Defines the SQL engine for which the SQL script should be generated.
+	    The supported engines are: "mysql" and "pgsql".
+	  </td></tr>
+	<tr><td valign="top"><code>stdout</code></td>
+	  <td valign="top">
+	    If presents, this option force Bib2ML to output the files onto the standard output instead of files.
+	  </td></tr>
+      </table></p>
+
+    <hr width="100%">
+
+    <a name="themes"></a><h2>6. Supported Themes</h2>
+
+    Bib2ML permits to select a theme which influence the look of the generated pages. You could select a theme which the command-line option <code>--theme</code> and list all the supported themes which <code>--themelist</code>.</p>
+
+    <a name="theme_Simple"></a><h2>6.1. Theme Simple</h2>
+
+    <p>The theme <code>Simple</code> is the default theme. It is quiet similar to the default output of <a href="http://java.sun.com/j2se/javadoc/">JavaDoc</a>.</p>
+    <center><a href="./capture2.png"><img src="./capture2.png" width="50%"></a></center>
+
+    <a name="theme_Dyna"></a><h2>6.2. Theme Dyna</h2>
+
+    <p>The theme <code>Dyna</code> is an experimental theme. It uses its own look policy and includes some dynamical features such a collapsing lists...</p>
+
+    <center><a href="./capture.png"><img src="./capture.png" width="50%"></a></center>
+
+    <a name="theme_contrib"></a><h2>6.3. Contribute</h2>
+
+    <p>Do you want to have your own theme for the HMTL generators? If yes, you should write your own theme in Perl.</p>
+
+    <p>Create a Perl class which extends the class <code>Bib2HTML::Generator::Theme</code> and implements the required functions. To have any example of implementation, see the two default themes: <code>Bib2HTML::Generator::Theme::Simple</code> and <code>Bib2HTML::Generator::Theme::Dyna</code>. Caution: you must put your theme class inside the same directory as <code>Simple</code> and <code>Dyna</code>.</p>
+
+    <hr width="100%">
+
+    <a name="languages"></a><h2>7. Supported Languages</h2>
+
+    <p>Bib2ML supports the French, the English, Spanish (thanks to Sebastian), Portuguese (thanks to João) and Italian (thanks to Cristian).</p>
+
+    <a name="languages_contrib"></a><h2>7.1. Contribute</h2>
+
+    <p>If you want to add the support for a specifical language, you need to create the following files inside the language directory (<code>/path/to/bib2ml/Bib2HTML/Generator/Lang</code>):<ul>
+      <li>copy the file <code>ENGLISH</code> as <code>LANGUAGE</code> (where <code>LANGUAGE</code> is the name of your language);</li>
+      <li>edit the file <code>LANGUAGE</code>; each line must start with the string identifier, which must be unchanged, followed by the string to display (see below for the syntax);</li>
+      <li>Repeat the two previous steps for each file for which the name starts by <code>ENGLISH</code>.</li>
+      <li>The file associated to an HTML generation has the name <code>&lt;LANGUAGE&gt;.&lt;GENERATION_NAME&gt;</code>.</li>
+      <li>The file associated to an HTML theme has the name <code>&lt;LANGUAGE&gt;.Theme.&lt;THEME_NAME&gt;</code>.</li>
+    </ul></p>
+
+    <p>The syntax of the language files is:<ul>
+      <li>Each line starting with '<code>#</code>' is a comment</li>
+      <li>Each language line must respect the syntax: <code>IDENTIFIER = STRING</code> where <code>IDENTIFIER</code> is the name of the string specified inside the Perl source code of Bib2ML, and <code>STRING</code> is the value of the string</li>
+      <li>Empty lines are ignored</li>
+      <li>If the string value finished by the character backslash (<code>\</code>), the value is assumed to continue on the next line (the spaces characters starting the next line will be ignored)</li>
+      <li>If the string value contains a substring of the form <code>{{NAME}}</code>, the substring will be replaced by the result of a call to the Perl function called <code>NAME</code></li>
+      <li>If the string value contains a substring of the form <code>#NUMBER</code>, the substring will be dynamically replaced by the value of the <code>NUMBER</code>-th parameter passed to the Perl function which permits to get the value.</li>
+    </ul></p>
+
+    <hr width="100%">
+
+    <a name="license"></a><h2>8. License</h2>
+
+    <p>Bib2ML is under the GNU GPL</a> license.</p>
+
+    <p>Bib2ML is a converter of BibTeX data files into HTML pages.<br>
+      Copyright &copy; 1998-2006  Stéphane GALLAND &lt;galland@arakhne.org&gt;</p>
+
+    <p>This program is free software; you can redistribute it and/or modify it under the terms of the <a href="http://www.gnu.org/copyleft/gpl.html">GNU General Public License</a> as published by the <a href="http://www.fsf.org/">Free Software Foundation</a>; either version 2 of the License, or (at your option) any later version.</p>
+
+    <p> This program is distributed in the hope that it will be useful, but <strong>WITHOUT ANY WARRANTY</strong>; without even the implied warranty of <strong>MERCHANTABILITY</strong> or <strong>FITNESS FOR A PARTICULAR PURPOSE</strong>.  See the  GNU General Public License for more details.</p>
+
+    <p>You should have received a copy of the GNU General Public License along with this program; see the file <code>COPYING</code>. If not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.</p>
+
+    <hr width="100%">
+
+    <a name="contributor"></a><h2>9. Contributors</h2>
+
+    <p>I would like to thank the following people for generously taking the
+      time to point out bugs, suggest improvements, or send me Bib2ML
+      patches. Many thanks to:<ul>
+      <li><a href="mailto:joao.lourenco@di.fct.unl.pt">João LOURENCO</a> has:<ul>
+	  <li>submited the Portuguese translations.</li>
+	</ul></li>
+      <li><a href="mailto:michail@mpi-sb.mpg.de">Dimitris MICHAIL</a> has:<ul>
+	  <li>added TeX commands.</li>
+	</ul></li>
+      <li><a href="mailto:preining@logic.at">Norbert PREINING</a> has:<ul>
+	  <li>added the function <code>uniq</code> to eliminate redundant 
+	    values from a sorted list.</li>
+	  <li>added the TeX's commands '<code>\#</code>' and '<code>\L</code>'.</li>
+	  <li>added a warning message inside <code>__texcommand_map_to</code> when
+	    a accentuated TeX command was encoutered but
+	    Bib2ML does not known any corresponding HTML character
+	    (e.g. <code>\'b</code>).</li>
+	  <li>fixed a bug inside <code>__texcommand_map_to</code> which does not
+	    return the right variable's value.</li>
+	  <li>fixed two bugs inside <code>save_generator_parameter</code> which prevent
+	    to properly set the parameters' values.</li>
+	</ul></li>
+      <li><a href="mailto:sebastian.rodriguez@utbm.fr">Sebastian RODRIGUEZ</a> has:<ul>
+	  <li>reported bugs and submited the Spanish translations.</li>
+	</ul></li>
+      <li><a href="mailto:zinser@zinser.no-ip.info">Martin P.J. ZINSER</a> has:<ul>
+	  <li>fixed a bug inside the function <code>addentry</code> 
+	    which permits to add an BibTeX's field.
+	    All the fields' names are lower-cased to avoid
+	    setting problems.</li>
+	</ul></li>
+      <li><a href="mailto:cri@linux.it">Cristian RIGAMONTI</a> has:<ul>
+	  <li>submited the Italian translations.</li>
+	</ul></li>
+      <li><a href="mailto:paolini@di.unito.it">Luca PAOLINI</a> has:<ul>
+	  <li>submited a patch that permits to support more letters with the caron accent.</li>
+	</ul></li>
+      <li><a href="mailto:gabrisa@optics.szfki.kfki.hu">Aurel GABRIS</a> has:<ul>
+	  <li>submited a patch that add the generator parameters <code>max-titlelength-overview</code> and <code>show-journalparams-overview</code>.</li>
+	</ul></li>
+      <li><a href="mailto:loew@mathematik.tu-darmstadt.de">Tobias LOEW</a> has:<ul>
+	  <li>patched the TeX parser to support some roman characters.</li>
+	</ul></li>
+      <li><a href="mailto:gasper.jaklic@fmf.uni-lj.si">Gasper JAKLIC</a> has:<ul>
+	  <li>patched the TeX parser to support some locale characters;</li>
+	  <li>reproduced high priority bugs and mismatches.</li>
+	</ul></li>
+      <li><a href="mailto:olivier.hugues@gmail.com">Olivier HUGUES</a> has:<ul>
+	  <li>reported bugs in bib2sql tool.</li>
+	</ul></li>
+
+    </ul></p>
+
+    <hr width="100%">
+
+    <a name="bugreport"></a><h2>10. Bug Reporting</h2>
+
+    <p>You could submit bugs, suggest improvements, or send Bib2ML patches by using one of the following methods:<ul>
+      <li>send an email to <a href="mailto:galland@arakhne.org"><code>galland@arakhne.org</code></a>;</li>
+    </ul></p>
+
+    <p align="right"><small>Copyright 2004-11 &copy; Stéphane GALLAND<br><code>&lt;galland@arakhne.org&gt;</code></small></p>
+
+  </body>
+</html>
